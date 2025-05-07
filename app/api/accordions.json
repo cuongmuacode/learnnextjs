@@ -1,0 +1,36 @@
+[
+    {
+      "key": "intro-1",
+      "title": "Giới thiệu hệ thống",
+      "subtitle": "Tổng quan về hệ thống quản lý",
+      "content": "Hệ thống giúp quản lý tài sản, người dùng và các hoạt động nội bộ hiệu quả.",
+      "ariaLabel": "Giới thiệu hệ thống"
+    },
+    {
+      "key": "usage-002",
+      "title": "Cách sử dụng",
+      "content": "Truy cập vào dashboard và sử dụng menu bên trái để điều hướng.",
+      "ariaLabel": "Cách sử dụng"
+    },
+    {
+      "key": "faq-003",
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Hỗ trợ người dùng mới",
+      "content": "Danh sách các câu hỏi phổ biến và câu trả lời chi tiết.",
+      "ariaLabel": "Câu hỏi thường gặp"
+    },
+    {
+      "key": "contact-004",
+      "title": "Liên hệ",
+      "content": "Vui lòng liên hệ support@example.com để được hỗ trợ.",
+      "ariaLabel": "Liên hệ"
+    },
+    {
+      "key": "policy-005",
+      "title": "Chính sách bảo mật",
+      "subtitle": "An toàn dữ liệu người dùng",
+      "content": "Chúng tôi cam kết bảo vệ dữ liệu cá nhân của bạn.",
+      "ariaLabel": "Chính sách bảo mật"
+    }
+  ]
+  

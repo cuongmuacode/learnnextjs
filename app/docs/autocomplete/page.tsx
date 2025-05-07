@@ -6,15 +6,15 @@ import React, { JSX, SVGProps } from "react";
 
 export default function AutocompletePage() {
   const autocompleteOptions: VkxAutocompleteOption[] = [
-    { label: "TypeScript", value: "typescript" },
-    { label: "JavaScript", value: "javascript" },
+    { textValue: "TypeScript", value: "typescript" },
+    { textValue: "JavaScript", value: "javascript" },
     {
-      label: "Python",
+      textValue: "Python",
       value: "python",
       startContent: <Avatar alt="Venezuela" className="w-6 h-6" src="https://flagcdn.com/ve.svg" />
     },
-    { label: "Java", value: "java" },
-    { label: "C++", value: "cpp" },
+    { textValue: "Java", value: "java" },
+    { textValue: "C++", value: "cpp" },
   ];
 
   const [key, setValue] = React.useState("");

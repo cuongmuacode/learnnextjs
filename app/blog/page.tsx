@@ -1,6 +1,6 @@
 "use client";
 
-import { VkxAccordion } from "@/components/vkx-accordion";
+import { VkxAccordion } from "@/components/vkx-accordion/vkx-accordion";
 import { VkxAutocomplete, VkxAutocompleteOption } from "@/components/vkx-autocomplete";
 
 export default function BlogPage() {

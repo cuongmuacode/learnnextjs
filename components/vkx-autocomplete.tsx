@@ -4,7 +4,7 @@ import { Autocomplete, AutocompleteItem } from "@heroui/react";
 import { ReactNode } from "react";
 
 export interface VkxAutocompleteOption {
-    label: string;
+    textValue: string;
     value: string;
     description?: string;
     startContent?: ReactNode;
@@ -92,10 +92,10 @@ export function VkxAutocomplete({
             {options.map((option) => (
                 <AutocompleteItem
                     key={option.value}
-                    textValue={option.label}
+                    textValue={option.textValue}
                     startContent={option.startContent}
                 >
-                    {option.label}
+                    {option.textValue}
                 </AutocompleteItem>
             ))}
         </Autocomplete>
