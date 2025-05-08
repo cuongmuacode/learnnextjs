@@ -4,7 +4,9 @@
       "title": "Giới thiệu hệ thống",
       "subtitle": "Tổng quan về hệ thống quản lý",
       "content": "Hệ thống giúp quản lý tài sản, người dùng và các hoạt động nội bộ hiệu quả.",
-      "ariaLabel": "Giới thiệu hệ thống"
+      "ariaLabel": "Giới thiệu hệ thống",
+      "link":"https://chatgpt.com/",
+      "imageUrl":"https://i.pravatar.cc/150?u=a04258114e29026702d"
     },
     {
       "key": "usage-002",

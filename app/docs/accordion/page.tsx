@@ -3,9 +3,47 @@ import { VkxAccordion } from "@/components/vkx-accordion/vkx-accordion";
 import { JSX, SVGProps, useState } from "react";
 import accordionItems from '../../../app/api/accordions.json';
 import { VkxAccordionProps } from "@/components/vkx-accordion/vkx-accordion-props";
+import { VkxAccordionItemProps } from "@/components/vkx-accordion/vkx-accordion-item-props";
+import { Avatar } from "@heroui/react";
 
 export default function DocsPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  var accordionItemsCustomTitle = accordionItems.map<VkxAccordionItemProps>((item) => ({
+    key: item.key,
+    title: (
+      <div className="flex items-center gap-2">
+        <p className="font-semibold text-gray-800 dark:text-gray-200">{item.title}</p>
+        {item.link && (
+          <a
+            href={item.link}
+            className="text-blue-500 underline hover:text-blue-700"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn more
+          </a>
+        )}
+      </div>
+    ),
+    children: (
+      <div className="text-gray-600 dark:text-gray-400">
+        {item.content}
+      </div>
+    ),
+    subtitle: item.subtitle && (
+      <p className="text-sm text-gray-500 dark:text-gray-400">{item.subtitle}</p>
+    ),
+    startContent: item.imageUrl && (
+      <Avatar
+        isBordered
+        color="warning"
+        radius="lg"
+        src={item.imageUrl}
+        alt={`${item.title} image`}
+      />
+    ),
+  }));
 
   var accordionItemsWithSubtitle = accordionItems.map((item) =>
   ({
@@ -103,6 +141,15 @@ export default function DocsPage() {
         <div className="pt-3">
           <h1 className="text-xl font-medium text-black dark:text-white">Các keys đã chọn: </h1>
           {Array.from(selected).map((item) => (<span key={item}>Key: {item} <br /></span>))}
+        </div>
+      </div>
+
+      <div>
+        <h1 className="text-xl font-medium text-black dark:text-white">Trường hợp 5: Cho phép viết thêm html vào title, content</h1>
+        <div className="mx-auto flex pt-6">
+          <VkxAccordion
+            accordionItems={accordionItemsCustomTitle}
+            variant="bordered" />
         </div>
       </div>
     </div>
