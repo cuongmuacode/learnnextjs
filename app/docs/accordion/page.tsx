@@ -6,7 +6,7 @@ import { VkxAccordionProps } from "@/components/vkx-accordion/vkx-accordion-prop
 import { VkxAccordionItemProps } from "@/components/vkx-accordion/vkx-accordion-item-props";
 import { Avatar } from "@heroui/react";
 
-export default function DocsPage() {
+export default function AccordionPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   var accordionItemsCustomTitle = accordionItems.map<VkxAccordionItemProps>((item) => ({
