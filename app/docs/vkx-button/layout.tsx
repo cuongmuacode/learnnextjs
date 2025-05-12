@@ -1,4 +1,4 @@
-export default function AutocompleteLayout({
+export default function VkxButtonLayout({
     children,
   }: {
     children: React.ReactNode;

@@ -1,4 +1,4 @@
-export default function AlertLayout({
+export default function VkxAlertLayout({
     children,
   }: {
     children: React.ReactNode;

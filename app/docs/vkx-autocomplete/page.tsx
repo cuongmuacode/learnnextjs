@@ -4,7 +4,7 @@ import { VkxAutocomplete, VkxAutocompleteOption } from "@/components/vkx-autocom
 import { Avatar } from "@heroui/react";
 import React, { JSX, SVGProps } from "react";
 
-export default function AutocompletePage() {
+export default function VkxAutocompletePage() {
   const autocompleteOptions: VkxAutocompleteOption[] = [
     { textValue: "TypeScript", value: "typescript" },
     { textValue: "JavaScript", value: "javascript" },

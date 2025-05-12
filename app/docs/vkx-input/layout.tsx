@@ -1,5 +1,5 @@
 
-export default function AccordionLayout({
+export default function VkxInputLayout({
     children,
 }: {
     children: React.ReactNode;

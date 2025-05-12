@@ -4,7 +4,7 @@ import { VkxAlert } from "@/components/vkx-alert";
 import { Button } from "@heroui/button";
 import React from "react";
 
-export default function DocsPage() {
+export default function VkxAlertPage() {
   const [isVisible, setIsVisible] = React.useState(true);
 
   return (
