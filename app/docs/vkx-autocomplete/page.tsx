@@ -1,8 +1,12 @@
 "use client";
 
-import { VkxAutocomplete, VkxAutocompleteOption } from "@/components/vkx-autocomplete";
-import { Avatar } from "@heroui/react";
 import React, { JSX, SVGProps } from "react";
+import { Avatar } from "@heroui/react";
+
+import {
+  VkxAutocomplete,
+  VkxAutocompleteOption,
+} from "@/components/vkx-autocomplete";
 
 export default function VkxAutocompletePage() {
   const autocompleteOptions: VkxAutocompleteOption[] = [
@@ -11,7 +15,13 @@ export default function VkxAutocompletePage() {
     {
       textValue: "Python",
       value: "python",
-      startContent: <Avatar alt="Venezuela" className="w-6 h-6" src="https://flagcdn.com/ve.svg" />
+      startContent: (
+        <Avatar
+          alt="Venezuela"
+          className="w-6 h-6"
+          src="https://flagcdn.com/ve.svg"
+        />
+      ),
     },
     { textValue: "Java", value: "java" },
     { textValue: "C++", value: "cpp" },
@@ -20,57 +30,54 @@ export default function VkxAutocompletePage() {
   const [key, setValue] = React.useState("");
   const [inputValue, setInputValue] = React.useState("");
 
-  const [touched, setTouched] = React.useState(false);
-
   return (
     <div className="flex w-full flex-col gap-8">
       <VkxAutocomplete
         className="max-w-xs"
+        isDisabled={true}
+        label="Programming Language"
         options={autocompleteOptions}
         placeholder="Select a programming language"
-        label="Programming Language"
-        isDisabled={true}
       />
 
       <VkxAutocomplete
-        className="max-w-xs"
-        options={autocompleteOptions}
-        placeholder="Select a programming language"
-        label="Programming Language"
-        isDisabled={false}
-        defaultValue="Python"
         isRequired
         readOnly
+        className="max-w-xs"
+        defaultValue="Python"
         disabledKeys={new Set(["python"])}
+        isDisabled={false}
+        label="Programming Language"
+        options={autocompleteOptions}
+        placeholder="Select a programming language"
       />
 
       <VkxAutocomplete
+        allowsCustomValue
+        isRequired
         className="max-w-xs"
+        color="secondary"
+        defaultValue="Python"
+        description="Description programming"
+        disabledKeys={new Set(["python"])}
+        isDisabled={false}
+        label="Programming Language"
         options={autocompleteOptions}
         placeholder="Select a programming language"
-        label="Programming Language"
-        isDisabled={false}
-        defaultValue="Python"
-        isRequired
-        disabledKeys={new Set(["python"])}
-        size="md"
-        color={"secondary"}
-        variant="bordered"
-        startContent={<PetIcon className="text-xl" />}
-        allowsCustomValue
-        selectorIcon={<PetIcon className="text-xl" />}
-        description="Description programming"
-        onSelectionChange={setValue}
-        onInputChange={setInputValue}
         selectedKey={key}
-        onClose={setTouched}
-        vkxScrollShadowProps={
-          {
-            isEnabled: true
-          }
-        }
+        selectorIcon={<PetIcon className="text-xl" />}
+        size="md"
+        startContent={<PetIcon className="text-xl" />}
+        variant="bordered"
+        vkxScrollShadowProps={{
+          isEnabled: true,
+        }}
+        onInputChange={setInputValue}
+        onSelectionChange={setValue}
       />
-      <p className="mt-1 text-small text-default-500">Current  input value: {inputValue}</p>
+      <p className="mt-1 text-small text-default-500">
+        Current input value: {inputValue}
+      </p>
       <p className="text-small text-default-500">Current key text: {key}</p>
     </div>
   );

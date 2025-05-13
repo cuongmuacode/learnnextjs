@@ -1,7 +1,10 @@
 "use client";
 
 import { VkxAccordion } from "@/components/vkx-accordion/vkx-accordion";
-import { VkxAutocomplete, VkxAutocompleteOption } from "@/components/vkx-autocomplete";
+import {
+  VkxAutocomplete,
+  VkxAutocompleteOption,
+} from "@/components/vkx-autocomplete";
 
 export default function BlogPage() {
   const defaultContent =
@@ -21,11 +24,11 @@ export default function BlogPage() {
   ];
 
   const autocompleteOptions: VkxAutocompleteOption[] = [
-    { label: "TypeScript", value: "typescript" },
-    { label: "JavaScript", value: "javascript" },
-    { label: "Python", value: "python" },
-    { label: "Java", value: "java" },
-    { label: "C++", value: "cpp" },
+    { textValue: "TypeScript", value: "typescript" },
+    { textValue: "JavaScript", value: "javascript" },
+    { textValue: "Python", value: "python" },
+    { textValue: "Java", value: "java" },
+    { textValue: "C++", value: "cpp" },
   ];
 
   const handleSelectionChange = (value: string) => {
@@ -34,14 +37,17 @@ export default function BlogPage() {
 
   return (
     <div className="flex w-full flex-col gap-8">
-      <VkxAutocomplete 
+      <VkxAutocomplete
+        label="Programming Language"
         options={autocompleteOptions}
         placeholder="Select a programming language"
-        label="Programming Language"
         onSelectionChange={handleSelectionChange}
       />
-      
-      <VkxAccordion accordionItems={accordionItems} defaultExpandedKeys={["1"]} />
+
+      <VkxAccordion
+        accordionItems={accordionItems}
+        defaultExpandedKeys={new Set(["1"])}
+      />
     </div>
   );
 }

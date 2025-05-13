@@ -1,103 +1,111 @@
 "use client";
 
+import React, { ReactNode } from "react";
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
-import { ReactNode } from "react";
 
 export interface VkxAutocompleteOption {
-    textValue: string;
-    value: string;
-    description?: string;
-    startContent?: ReactNode;
+  textValue: string;
+  value: string;
+  description?: string;
+  startContent?: ReactNode;
 }
 
 export interface VkxScrollShadowProps {
-    isEnabled?: boolean;
+  isEnabled?: boolean;
 }
 
 interface VkxAutocompleteProps {
-    options: VkxAutocompleteOption[];
-    defaultValue?: string;
-    description?: string;
-    placeholder?: string;
-    label?: string;
-    selectedKey?: string;
-    disabledKeys?: Set<any>;
-    onSelectionChange?: (value: any) => void;
-    onClose?: (value: boolean) => void;
-    onInputChange?: (value: any) => void;
-    className?: string;
-    errorMessage?: string;
-    isRequired?: boolean;
-    isDisabled?: boolean;
-    readOnly?: boolean;
-    size?: "sm" | "md" | "lg";
-    color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
-    variant?: "flat" | "bordered" | "underlined" | "faded";
-    startContent?: ReactNode;
-    allowsCustomValue?: boolean;
-    selectorIcon?: ReactNode;
-    vkxScrollShadowProps?: VkxScrollShadowProps;
+  allowsCustomValue?: boolean;
+  className?: string;
+  color?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger";
+  defaultValue?: string;
+  description?: string;
+  disabledKeys?: Set<any>;
+  errorMessage?: string;
+  isDisabled?: boolean;
+  isRequired?: boolean;
+  label?: string;
+  onClose?: (value: boolean) => void;
+  onInputChange?: (value: any) => void;
+  onSelectionChange?: (value: any) => void;
+  options: VkxAutocompleteOption[];
+  placeholder?: string;
+  readOnly?: boolean;
+  selectedKey?: string;
+  selectorIcon?: ReactNode;
+  size?: "sm" | "md" | "lg";
+  startContent?: ReactNode;
+  variant?: "flat" | "bordered" | "underlined" | "faded";
+  vkxScrollShadowProps?: VkxScrollShadowProps;
 }
 
 export function VkxAutocomplete({
-    options,
-    placeholder,
-    defaultValue,
-    description,
-    label,
-    selectedKey,
-    disabledKeys,
-    onSelectionChange,
-    onClose,
-    onInputChange,
-    className,
-    errorMessage,
-    isRequired,
-    isDisabled,
-    readOnly,
-    size,
-    color,
-    variant,
-    startContent,
-    allowsCustomValue,
-    selectorIcon,
-    vkxScrollShadowProps
+  allowsCustomValue,
+  className,
+  color,
+  defaultValue,
+  description,
+  disabledKeys,
+  errorMessage,
+  isDisabled,
+  isRequired,
+  label,
+  onClose,
+  onInputChange,
+  onSelectionChange,
+  options,
+  placeholder,
+  readOnly,
+  selectedKey,
+  selectorIcon,
+  size,
+  startContent,
+  variant,
+  vkxScrollShadowProps,
 }: VkxAutocompleteProps) {
-    return (
-        <Autocomplete
-            defaultInputValue={defaultValue}
-            placeholder={placeholder}
-            description={description}
-            label={label}
-            selectedKey={selectedKey}
-            className={className}
-            onSelectionChange={onSelectionChange}
-            onClose={() => { if (onClose) onClose(true); }}
-            onInputChange={onInputChange}
-            errorMessage={errorMessage}
-            isRequired={isRequired}
-            isDisabled={isDisabled}
-            disabledKeys={disabledKeys}
-            readOnly={readOnly}
-            size={size}
-            color={color}
-            variant={variant}
-            startContent={startContent}
-            allowsCustomValue={allowsCustomValue}
-            selectorIcon={selectorIcon}
-            scrollShadowProps={{
-                isEnabled: vkxScrollShadowProps?.isEnabled
-            }}
+  return (
+    <Autocomplete
+      allowsCustomValue={allowsCustomValue}
+      className={className}
+      color={color}
+      defaultInputValue={defaultValue}
+      description={description}
+      disabledKeys={disabledKeys}
+      errorMessage={errorMessage}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      label={label}
+      placeholder={placeholder}
+      readOnly={readOnly}
+      scrollShadowProps={{
+        isEnabled: vkxScrollShadowProps?.isEnabled,
+      }}
+      selectedKey={selectedKey}
+      selectorIcon={selectorIcon}
+      size={size}
+      startContent={startContent}
+      variant={variant}
+      onClose={() => {
+        if (onClose) onClose(true);
+      }}
+      onInputChange={onInputChange}
+      onSelectionChange={onSelectionChange}
+    >
+      {options.map((option) => (
+        <AutocompleteItem
+          key={option.value}
+          startContent={option.startContent}
+          textValue={option.textValue}
         >
-            {options.map((option) => (
-                <AutocompleteItem
-                    key={option.value}
-                    textValue={option.textValue}
-                    startContent={option.startContent}
-                >
-                    {option.textValue}
-                </AutocompleteItem>
-            ))}
-        </Autocomplete>
-    );
+          {option.textValue}
+        </AutocompleteItem>
+      ))}
+    </Autocomplete>
+  );
 }

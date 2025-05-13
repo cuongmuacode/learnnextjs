@@ -1,42 +1,42 @@
 import { Input } from "@heroui/input";
+
 import { VkxInputProps } from "./vkx-input-props";
 
 export const VkxInput: React.FC<VkxInputProps> = ({
-    children,
-    type = "text",
-    placeholder,
-    label,
-    defaultValue,
-    readOnly,
-    isDisabled,
-    labelPlacement,
-    description,
-    errorMessage,
-    isInvalid,
-    value,
-    onValueChange,
-    onClear,
-    endContent
+  children,
+  defaultValue,
+  description,
+  endContent,
+  errorMessage,
+  isDisabled,
+  isInvalid,
+  label,
+  labelPlacement,
+  onClear,
+  onValueChange,
+  placeholder,
+  readOnly,
+  type = "text",
+  value,
 }) => {
-    return (
-        <Input
-            children={children}
-            type={type}
-            placeholder={placeholder}
-            label={label}
-            defaultValue={defaultValue}
-            readOnly={readOnly}
-            isDisabled={isDisabled}
-            labelPlacement={labelPlacement}
-            description={description}
-            errorMessage={errorMessage}
-            isInvalid={isInvalid}
-            value={value}
-            onValueChange={onValueChange}
-            onClear={onClear}
-            endContent={endContent}
-        >
-
-        </Input>
-    );
-}
+  return (
+    <Input
+      defaultValue={defaultValue}
+      description={description}
+      endContent={endContent}
+      errorMessage={errorMessage}
+      isDisabled={isDisabled}
+      isInvalid={isInvalid}
+      label={label}
+      labelPlacement={labelPlacement}
+      placeholder={placeholder}
+      readOnly={readOnly}
+      type={type}
+      value={value}
+      onClear={onClear}
+      onValueChange={onValueChange}
+    >
+      {children}
+    </Input>
+  );
+};

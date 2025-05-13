@@ -1,54 +1,63 @@
 "use client";
-import VkxButton from "@/components/vkx-button/vkx-button";
+
+import React, { JSX, SVGProps } from "react";
 import { ButtonGroup } from "@heroui/button";
-import React, { JSX, SVGProps, useState } from "react";
+
+import VkxButton from "@/components/vkx-button/vkx-button";
 
 export default function VkxButtonPage() {
   const [value, setValue] = React.useState("");
 
   return (
     <div className="flex w-full flex-col gap-8">
-
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">1. Cơ bản</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          1. Cơ bản
+        </h1>
       </div>
       <div>
         <VkxButton>Cơ bản</VkxButton>
       </div>
-
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">2. Không cho nhấn</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          2. Không cho nhấn
+        </h1>
       </div>
       <div>
-        <VkxButton isDisabled={true}>Không cho nhấn</VkxButton>
-      </div>
-
-      <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">3. Đang tải và không cho ấn</h1>
+        <VkxButton isDisabled>Không cho nhấn</VkxButton>
       </div>
       <div>
-        <VkxButton isLoading={true}>Không cho nhấn</VkxButton>
-      </div>      <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">4. Icon button</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          3. Đang tải và không cho ấn
+        </h1>
       </div>
       <div>
-        <VkxButton isIconOnly><PetIcon></PetIcon></VkxButton>
-      </div>
-
-      <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">5. Thao tác với button</h1>
+        <VkxButton isLoading>Không cho nhấn</VkxButton>
       </div>
       <div>
-        <VkxButton onPress={(event) => {
-          setValue("3");
-        }}>Nhấn vào đây</VkxButton>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          4. Icon button
+        </h1>
+      </div>
+      <div>
+        <VkxButton isIconOnly>
+          <PetIcon />
+        </VkxButton>
+      </div>
+      <div>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          5. Thao tác với button
+        </h1>
+      </div>
+      <div>
+        <VkxButton onPress={() => setValue("3")}>Nhấn vào đây</VkxButton>
 
         <p className="pt-4">1 + 2 = {value}</p>
       </div>
-
-
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">6. Nhóm button</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          6. Nhóm button
+        </h1>
       </div>
       <div>
         <ButtonGroup>
@@ -57,9 +66,10 @@ export default function VkxButtonPage() {
           <VkxButton>Button 3</VkxButton>
         </ButtonGroup>
       </div>
-
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">7. Không cho nhấn nhóm button</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          7. Không cho nhấn nhóm button
+        </h1>
       </div>
       <div>
         <ButtonGroup isDisabled>
@@ -68,88 +78,168 @@ export default function VkxButtonPage() {
           <VkxButton>Button 3</VkxButton>
         </ButtonGroup>
       </div>
-
       <div className="mt-12">
-        <h1 className="text-2xl font-medium text-black dark:text-white mb-6">Tài liệu về các thuộc tính (Props)</h1>
+        <h1 className="text-2xl font-medium text-black dark:text-white mb-6">
+          Tài liệu về các thuộc tính (Props)
+        </h1>
 
-        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">VkxButton Props</h2>
+        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">
+          VkxButton Props
+        </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
             <thead>
               <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Thuộc tính</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Kiểu dữ liệu</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mặc định</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mô tả</th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Thuộc tính
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Kiểu dữ liệu
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mặc định
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mô tả
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900">
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">children</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">ReactNode</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Nội dung hiển thị bên trong button</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  children
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  ReactNode
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Nội dung hiển thị bên trong button
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isDisabled</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Vô hiệu hóa button, không cho phép tương tác</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isDisabled
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Vô hiệu hóa button, không cho phép tương tác
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isLoading</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Hiển thị trạng thái đang tải và vô hiệu hóa button</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isLoading
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Hiển thị trạng thái đang tải và vô hiệu hóa button
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isIconOnly</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Định dạng button chỉ chứa icon</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isIconOnly
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Định dạng button chỉ chứa icon
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">onPress</td>                
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">(event) {'=>'} void</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Hàm xử lý sự kiện khi button được nhấn</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  onPress
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  (event) {"=>"} void
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Hàm xử lý sự kiện khi button được nhấn
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">ButtonGroup Props</h2>
+        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">
+          ButtonGroup Props
+        </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
             <thead>
               <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Thuộc tính</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Kiểu dữ liệu</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mặc định</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mô tả</th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Thuộc tính
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Kiểu dữ liệu
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mặc định
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mô tả
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900">
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">children</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">ReactNode</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Các button con trong nhóm</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  children
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  ReactNode
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Các button con trong nhóm
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isDisabled</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Vô hiệu hóa tất cả các button trong nhóm</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isDisabled
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Vô hiệu hóa tất cả các button trong nhóm
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <h3 className="text-lg font-medium text-blue-800 dark:text-blue-200 mb-2">Lưu ý về ReactNode</h3>
+          <h3 className="text-lg font-medium text-blue-800 dark:text-blue-200 mb-2">
+            Lưu ý về ReactNode
+          </h3>
           <p className="text-blue-700 dark:text-blue-300">
-            Các thuộc tính có kiểu <code>ReactNode</code> cho phép bạn truyền vào:
+            Các thuộc tính có kiểu <code>ReactNode</code> cho phép bạn truyền
+            vào:
           </p>
           <ul className="list-disc list-inside mt-2 text-blue-600 dark:text-blue-300">
             <li>Chuỗi văn bản đơn giản</li>

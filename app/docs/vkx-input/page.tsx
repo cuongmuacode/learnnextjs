@@ -1,29 +1,38 @@
 "use client";
+
+import React, { JSX } from "react";
+
 import { VkxInput } from "@/components/vkx-input/vkx-input";
-import React, { JSX, SVGProps, useState } from "react";
 
 export default function VkxInputPage() {
   const [value, setValue] = React.useState("");
-
   const [isVisible, setIsVisible] = React.useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  setTimeout(() => {
-    setValue("1234567");
-  }, 2000);
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setValue("1234567");
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
 
   return (
     <div className="flex w-full flex-col gap-y-10 pb-8">
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">1. Input cơ bản</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          1. Input cơ bản
+        </h1>
         <div className="mb-4">
           <p className="text-gray-600 dark:text-gray-400">
-            Input cơ bản với các thuộc tính label và type. Bạn có thể tùy chỉnh placeholder để hiển thị gợi ý cho người dùng.
-            Các kiểu input phổ biến bao gồm text, email, password, number, etc.
+            Input cơ bản với các thuộc tính label và type. Bạn có thể tùy chỉnh
+            placeholder để hiển thị gợi ý cho người dùng. Các kiểu input phổ
+            biến bao gồm text, email, password, number, etc.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Thích hợp cho các trường hợp nhập liệu đơn giản, không yêu cầu xác thực phức tạp.
+            Thích hợp cho các trường hợp nhập liệu đơn giản, không yêu cầu xác
+            thực phức tạp.
           </p>
         </div>
       </div>
@@ -33,103 +42,125 @@ export default function VkxInputPage() {
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">2. Input bị vô hiệu hóa và chỉ đọc</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          2. Input bị vô hiệu hóa và chỉ đọc
+        </h1>
         <div className="mb-4">
           <p className="text-gray-600 dark:text-gray-400">
-            Input có thể được cấu hình để vô hiệu hóa hoàn toàn (disabled) hoặc chỉ cho phép đọc (readonly).
-            Sử dụng prop isDisabled khi bạn muốn ngăn người dùng tương tác với input,
-            và readOnly khi bạn muốn hiển thị thông tin mà không cho phép chỉnh sửa.
+            Input có thể được cấu hình để vô hiệu hóa hoàn toàn (disabled) hoặc
+            chỉ cho phép đọc (readonly). Sử dụng prop isDisabled khi bạn muốn
+            ngăn người dùng tương tác với input, và readOnly khi bạn muốn hiển
+            thị thông tin mà không cho phép chỉnh sửa.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Hữu ích cho các trường thông tin tĩnh hoặc khi cần tạm thời khóa khả năng nhập liệu.
+            Hữu ích cho các trường thông tin tĩnh hoặc khi cần tạm thời khóa khả
+            năng nhập liệu.
           </p>
         </div>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <VkxInput 
-          label="Email (Disabled)" 
-          type="email" 
-          isDisabled={true} 
+        <VkxInput
+          isDisabled
           defaultValue="example@email.com"
-          description="Input này đã bị vô hiệu hóa" />
-        <VkxInput 
-          label="Email (Readonly)" 
-          type="email" 
-          readOnly={true} 
+          description="Input này đã bị vô hiệu hóa"
+          label="Email (Disabled)"
+          type="email"
+        />
+        <VkxInput
+          readOnly
           defaultValue="readonly@email.com"
-          description="Input này chỉ có thể đọc" />
-      </div>
-
-      <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">3. Vị trí của label và mô tả</h1>
-        <div className="mb-4">
-          <p className="text-gray-600 dark:text-gray-400">
-            Label có thể được đặt ở các vị trí khác nhau so với input để phù hợp với thiết kế của ứng dụng.
-            Thuộc tính description cho phép thêm thông tin mô tả hoặc hướng dẫn bổ sung.
-          </p>
-          <p className="mt-2 text-sm text-gray-500">
-            Sử dụng các vị trí label khác nhau để tối ưu hóa trải nghiệm người dùng và bố cục form.
-          </p>
-        </div>
-      </div>
-      <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <VkxInput 
-          label="Label Outside" 
-          type="email" 
-          labelPlacement="outside" 
-          description="Label ở trên input" />
-        <VkxInput 
-          label="Label Outside Left" 
+          description="Input này chỉ có thể đọc"
+          label="Email (Readonly)"
           type="email"
-          labelPlacement="outside-left" 
-          description="Label ở bên trái input" />
-        <VkxInput 
-          label="Label Inside" 
-          type="email" 
-          labelPlacement="inside" 
-          description="Label ở trong input" />
+        />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">4. Xác thực và hiển thị lỗi</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          3. Vị trí của label và mô tả
+        </h1>
         <div className="mb-4">
           <p className="text-gray-600 dark:text-gray-400">
-            Input có thể hiển thị trạng thái lỗi và thông báo lỗi khi dữ liệu không hợp lệ.
-            Sử dụng isInvalid và errorMessage để thông báo lỗi cho người dùng.
+            Label có thể được đặt ở các vị trí khác nhau so với input để phù hợp
+            với thiết kế của ứng dụng. Thuộc tính description cho phép thêm
+            thông tin mô tả hoặc hướng dẫn bổ sung.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Quan trọng cho việc xác thực form và cung cấp phản hồi ngay lập tức cho người dùng.
+            Sử dụng các vị trí label khác nhau để tối ưu hóa trải nghiệm người
+            dùng và bố cục form.
           </p>
         </div>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <VkxInput 
-          label="Email" 
+        <VkxInput
+          description="Label ở trên input"
+          label="Label Outside"
+          labelPlacement="outside"
           type="email"
-          errorMessage="Vui lòng nhập địa chỉ email hợp lệ" 
-          isInvalid={true} />
+        />
+        <VkxInput
+          description="Label ở bên trái input"
+          label="Label Outside Left"
+          labelPlacement="outside-left"
+          type="email"
+        />
+        <VkxInput
+          description="Label ở trong input"
+          label="Label Inside"
+          labelPlacement="inside"
+          type="email"
+        />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">5. Theo dõi thay đổi giá trị</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          4. Xác thực và hiển thị lỗi
+        </h1>
         <div className="mb-4">
           <p className="text-gray-600 dark:text-gray-400">
-            Sử dụng value và onValueChange để theo dõi và xử lý các thay đổi giá trị của input.
-            Prop onClear cho phép xử lý sự kiện khi người dùng xóa giá trị input.
+            Input có thể hiển thị trạng thái lỗi và thông báo lỗi khi dữ liệu
+            không hợp lệ. Sử dụng isInvalid và errorMessage để thông báo lỗi cho
+            người dùng.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Hữu ích khi cần đồng bộ giá trị input với state của ứng dụng hoặc thực hiện các tác vụ khi giá trị thay đổi.
+            Quan trọng cho việc xác thực form và cung cấp phản hồi ngay lập tức
+            cho người dùng.
           </p>
         </div>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <VkxInput 
-          label="Nhập giá trị" 
-          type="text"
-          value={value} 
-          onValueChange={setValue} 
-          onClear={() => setValue("")}
+        <VkxInput
+          errorMessage="Vui lòng nhập địa chỉ email hợp lệ"
+          isInvalid={true}
+          label="Email"
+          type="email"
+        />
+      </div>
+
+      <div>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          5. Theo dõi thay đổi giá trị
+        </h1>
+        <div className="mb-4">
+          <p className="text-gray-600 dark:text-gray-400">
+            Sử dụng value và onValueChange để theo dõi và xử lý các thay đổi giá
+            trị của input. Prop onClear cho phép xử lý sự kiện khi người dùng
+            xóa giá trị input.
+          </p>
+          <p className="mt-2 text-sm text-gray-500">
+            Hữu ích khi cần đồng bộ giá trị input với state của ứng dụng hoặc
+            thực hiện các tác vụ khi giá trị thay đổi.
+          </p>
+        </div>
+      </div>
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+        <VkxInput
           description="Giá trị sẽ được cập nhật sau 2 giây"
+          label="Nhập giá trị"
+          type="text"
+          value={value}
+          onClear={() => setValue("")}
+          onValueChange={setValue}
         />
       </div>
       <div className="mt-2 text-gray-600 dark:text-gray-400">
@@ -137,21 +168,24 @@ export default function VkxInputPage() {
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-black dark:text-white">6. Input mật khẩu với tùy chọn hiển thị</h1>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          6. Input mật khẩu với tùy chọn hiển thị
+        </h1>
         <div className="mb-4">
           <p className="text-gray-600 dark:text-gray-400">
-            Input type password với khả năng chuyển đổi giữa ẩn và hiện mật khẩu.
-            Sử dụng endContent để thêm nút toggle và kiểm soát việc hiển thị mật khẩu.
+            Input type password với khả năng chuyển đổi giữa ẩn và hiện mật
+            khẩu. Sử dụng endContent để thêm nút toggle và kiểm soát việc hiển
+            thị mật khẩu.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Cải thiện trải nghiệm người dùng bằng cách cho phép kiểm tra mật khẩu đã nhập.
+            Cải thiện trải nghiệm người dùng bằng cách cho phép kiểm tra mật
+            khẩu đã nhập.
           </p>
         </div>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
         <VkxInput
-          label="Password"
-          placeholder="Nhập mật khẩu của bạn"
+          description="Click vào icon bên phải để hiện/ẩn mật khẩu"
           endContent={
             <button
               aria-label="toggle password visibility"
@@ -166,142 +200,246 @@ export default function VkxInputPage() {
               )}
             </button>
           }
+          label="Password"
+          placeholder="Nhập mật khẩu của bạn"
           type={isVisible ? "text" : "password"}
-          description="Click vào icon bên phải để hiện/ẩn mật khẩu"
         />
       </div>
 
       <div className="mt-12">
-        <h1 className="text-2xl font-medium text-black dark:text-white mb-6">Tài liệu về các thuộc tính (Props)</h1>
+        <h1 className="text-2xl font-medium text-black dark:text-white mb-6">
+          Tài liệu về các thuộc tính (Props)
+        </h1>
 
-        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">VkxInput Props</h2>
+        <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">
+          VkxInput Props
+        </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
             <thead>
               <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Thuộc tính</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Kiểu dữ liệu</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mặc định</th>
-                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">Mô tả</th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Thuộc tính
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Kiểu dữ liệu
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mặc định
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mô tả
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900">
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">label</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  label
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Nhãn hiển thị cho trường input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">type</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">"text"</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  type
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;text&quot;
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Kiểu input (text, email, password, etc.)
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">value</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  value
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Giá trị của input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">defaultValue</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  defaultValue
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Giá trị mặc định ban đầu của input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">placeholder</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  placeholder
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Văn bản gợi ý hiển thị khi input trống
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">labelPlacement</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">"inside" | "outside" | "outside-left"</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">"outside"</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  labelPlacement
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;inside&quot; | &quot;outside&quot; |
+                  &quot;outside-left&quot;
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;outside&quot;
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Vị trí của nhãn so với input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">description</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  description
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Văn bản mô tả thêm cho input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">errorMessage</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  errorMessage
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Thông báo lỗi hiển thị khi input không hợp lệ
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isInvalid</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isInvalid
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Xác định trạng thái không hợp lệ của input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isDisabled</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isDisabled
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Vô hiệu hóa input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">readOnly</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  readOnly
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Cho phép chỉ đọc, không thể chỉnh sửa
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">onValueChange</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">function</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  onValueChange
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  function
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Hàm được gọi khi giá trị input thay đổi
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">onClear</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">function</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  onClear
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  function
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Hàm được gọi khi người dùng xóa giá trị input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">startContent</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">ReactNode</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  startContent
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  ReactNode
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Nội dung hiển thị ở đầu input
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">endContent</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">ReactNode</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  endContent
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  ReactNode
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   Nội dung hiển thị ở cuối input
                 </td>
@@ -311,9 +449,12 @@ export default function VkxInputPage() {
         </div>
 
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <h3 className="text-lg font-medium text-blue-800 dark:text-blue-200 mb-2">Lưu ý về ReactNode</h3>
+          <h3 className="text-lg font-medium text-blue-800 dark:text-blue-200 mb-2">
+            Lưu ý về ReactNode
+          </h3>
           <p className="text-blue-700 dark:text-blue-300">
-            Các thuộc tính có kiểu <code>ReactNode</code> cho phép bạn truyền vào:
+            Các thuộc tính có kiểu <code>ReactNode</code> cho phép bạn truyền
+            vào:
           </p>
           <ul className="list-disc list-inside mt-2 text-blue-600 dark:text-blue-300">
             <li>Chuỗi văn bản đơn giản</li>
@@ -329,30 +470,9 @@ export default function VkxInputPage() {
   );
 }
 
-const AnchorIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
-  return (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      height="24"
-      role="presentation"
-      viewBox="0 0 24 24"
-      width="24"
-      {...props}
-    >
-      <path
-        d="M8.465,11.293c1.133-1.133,3.109-1.133,4.242,0L13.414,12l1.414-1.414l-0.707-0.707c-0.943-0.944-2.199-1.465-3.535-1.465 S7.994,8.935,7.051,9.879L4.929,12c-1.948,1.949-1.948,5.122,0,7.071c0.975,0.975,2.255,1.462,3.535,1.462 c1.281,0,2.562-0.487,3.536-1.462l0.707-0.707l-1.414-1.414l-0.707,0.707c-1.17,1.167-3.073,1.169-4.243,0 c-1.169-1.17-1.169-3.073,0-4.243L8.465,11.293z"
-        fill="currentColor"
-      />
-      <path
-        d="M12,4.929l-0.707,0.707l1.414,1.414l0.707-0.707c1.169-1.167,3.072-1.169,4.243,0c1.169,1.17,1.169,3.073,0,4.243 l-2.122,2.121c-1.133,1.133-3.109,1.133-4.242,0L10.586,12l-1.414,1.414l0.707,0.707c0.943,0.944,2.199,1.465,3.535,1.465 s2.592-0.521,3.535-1.465L19.071,12c1.948-1.949,1.948-5.122,0-7.071C17.121,2.979,13.948,2.98,12,4.929z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-};
-
-export const EyeSlashFilledIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => {
+const EyeSlashFilledIcon = (
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -387,8 +507,9 @@ export const EyeSlashFilledIcon = (props: JSX.IntrinsicAttributes & React.SVGPro
     </svg>
   );
 };
-
-export const EyeFilledIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => {
+const EyeFilledIcon = (
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
+) => {
   return (
     <svg
       aria-hidden="true"

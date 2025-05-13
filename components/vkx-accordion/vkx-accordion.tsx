@@ -1,43 +1,45 @@
 "use client";
 
-import { Accordion, AccordionItem, SelectionMode } from "@heroui/react";
-import React, { ReactNode } from "react";
+import React from "react";
+import { Accordion, AccordionItem } from "@heroui/react";
+
 import { VkxAccordionProps } from "./vkx-accordion-props";
 
 export function VkxAccordion({
-    accordionItems: accordionItems,
-    defaultExpandedKeys,
-    selectionMode = "multiple",
-    isCompact = false,
-    variant = "light",
-    disabledKeys,
-    motionProps,
-    selectedKeys,
-    onSelectionChange,
+  accordionItems,
+  defaultExpandedKeys,
+  disabledKeys,
+  isCompact = false,
+  motionProps,
+  onSelectionChange,
+  selectedKeys,
+  selectionMode = "multiple",
+  variant = "light",
 }: VkxAccordionProps) {
-    return (
-        <Accordion
-            defaultExpandedKeys={defaultExpandedKeys}
-            disabledKeys={disabledKeys}
-            selectionMode={selectionMode}
-            isCompact={isCompact}
-            variant={variant}
-            motionProps={motionProps}
-            selectedKeys={selectedKeys}
-            onSelectionChange={onSelectionChange}
+  return (
+    <Accordion
+      defaultExpandedKeys={defaultExpandedKeys}
+      disabledKeys={disabledKeys}
+      isCompact={isCompact}
+      motionProps={motionProps}
+      selectedKeys={selectedKeys}
+      selectionMode={selectionMode}
+      variant={variant}
+      onSelectionChange={onSelectionChange}
+    >
+      {accordionItems.map((item) => (
+        <AccordionItem
+          key={item.key}
+          aria-label={item.ariaLabel}
+          indicator={item.indicator}
+          startContent={item.startContent}
+          subtitle={item.subtitle}
+          textValue={item.titleText}
+          title={item.title}
         >
-            {accordionItems.map((item) => (
-                <AccordionItem
-                    key={item.key}
-                    aria-label={item.ariaLabel}
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    startContent={item.startContent}
-                    indicator={item.indicator}
-                >
-                    {item.children}
-                </AccordionItem>
-            ))}
-        </Accordion>
-    );
+          {item.children}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
 }

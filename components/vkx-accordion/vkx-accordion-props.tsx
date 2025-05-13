@@ -1,14 +1,15 @@
-import { VkxAccordionItemProps } from "./vkx-accordion-item-props";
 import { Selection, SelectionMode } from "@react-types/shared";
 
+import { VkxAccordionItemProps } from "./vkx-accordion-item-props";
+
 export interface VkxAccordionProps {
-    accordionItems: VkxAccordionItemProps[];
-    defaultExpandedKeys?: Set<string>;
-    selectionMode?: SelectionMode;
-    disabledKeys?: Set<string>;
-    selectedKeys?: Set<string>;
-    isCompact?: boolean;
-    variant?: "splitted" | "bordered" | "light" | "shadow";
-    onSelectionChange?: (key:Selection)=>void | undefined;
-    motionProps?: any;
+  accordionItems: VkxAccordionItemProps[];
+  defaultExpandedKeys?: Set<string>;
+  disabledKeys?: Set<string>;
+  isCompact?: boolean;
+  motionProps?: any;
+  onSelectionChange?: (key: Selection) => void | undefined;
+  selectedKeys?: Set<string>;
+  selectionMode?: SelectionMode;
+  variant?: "splitted" | "bordered" | "light" | "shadow";
 }

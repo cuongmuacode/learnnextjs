@@ -1,0 +1,32 @@
+[
+    {
+        "key": "1",
+        "label": "JavaScript",
+        "description": "Popular programming language for web development",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    },
+    {
+        "key": "2",
+        "label": "TypeScript",
+        "description": "JavaScript with static typing",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    },
+    {
+        "key": "3",
+        "label": "Python",
+        "description": "Simple and powerful programming language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+    },
+    {
+        "key": "4",
+        "label": "Java",
+        "description": "Popular language for enterprise applications",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+    },
+    {
+        "key": "5",
+        "label": "C++",
+        "description": "High-performance programming language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+    }
+]
