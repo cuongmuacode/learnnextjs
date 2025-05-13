@@ -48,7 +48,7 @@ export default function VkxAccordionPage() {
           src={item.imageUrl}
         />
       ),
-    })
+    }),
   );
 
   var accordionItemsWithSubtitle = accordionItems.map((item) => ({

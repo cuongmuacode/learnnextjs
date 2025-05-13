@@ -6,7 +6,7 @@ import { Avatar } from "@heroui/react";
 import {
   VkxAutocomplete,
   VkxAutocompleteOption,
-} from "@/components/vkx-autocomplete";
+} from "@/components/vkx-autocomplete/vkx-autocomplete";
 
 export default function VkxAutocompletePage() {
   const autocompleteOptions: VkxAutocompleteOption[] = [

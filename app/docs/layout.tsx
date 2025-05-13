@@ -16,14 +16,12 @@ export default function DocsLayout({
 
   const components: NavigationModels[] = [
     { name: "Accordion", href: "/docs/vkx-accordion" },
-    { name: "Autocomplete", href: "/docs/vkx-autocomplete" },
     { name: "Alert", href: "/docs/vkx-alert" },
+    { name: "Autocomplete", href: "/docs/vkx-autocomplete" },
     { name: "Avatar", href: "/docs/vkx-avatar" },
     { name: "Badge", href: "/docs/vkx-badge" },
     { name: "Breadcrumbs", href: "/docs/vkx-breadcrumbs" },
     { name: "Button", href: "/docs/vkx-button" },
-    { name: "Input", href: "/docs/vkx-input", status: "Updated" },
-    { name: "Select", href: "/docs/vkx-select", status: "Updated" },
     { name: "Calendar", href: "/docs/vkx-calendar" },
     { name: "Card", href: "/docs/vkx-card" },
     { name: "Checkbox", href: "/docs/vkx-checkbox", status: "Updated" },
@@ -35,8 +33,10 @@ export default function DocsLayout({
     { name: "Date Picker", href: "/docs/vkx-date-picker" },
     { name: "Date Range Picker", href: "/docs/vkx-date-range-picker" },
     { name: "Divider", href: "/docs/vkx-divider" },
-    { name: "Dropdown", href: "/docs/vkx-dropdown" },
     { name: "Drawer", href: "/docs/vkx-drawer" },
+    { name: "Dropdown", href: "/docs/vkx-dropdown" },
+    { name: "Input", href: "/docs/vkx-input", status: "Updated" },
+    { name: "Select", href: "/docs/vkx-select", status: "Updated" },
   ];
 
   return (

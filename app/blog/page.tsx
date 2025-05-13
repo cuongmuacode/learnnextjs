@@ -4,7 +4,7 @@ import { VkxAccordion } from "@/components/vkx-accordion/vkx-accordion";
 import {
   VkxAutocomplete,
   VkxAutocompleteOption,
-} from "@/components/vkx-autocomplete";
+} from "@/components/vkx-autocomplete/vkx-autocomplete";
 
 export default function BlogPage() {
   const defaultContent =
