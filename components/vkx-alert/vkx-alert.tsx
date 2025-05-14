@@ -48,7 +48,6 @@ export const VkxAlert = ({
           className,
         ),
         mainWrapper: cn("pt-1", classNames?.mainWrapper),
-        iconWrapper: cn("dark:bg-transparent", classNames?.iconWrapper),
       }}
       color={color}
       variant={variant}

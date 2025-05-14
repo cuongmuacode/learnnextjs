@@ -4,6 +4,7 @@ import { VkxInputProps } from "./vkx-input-props";
 
 export const VkxInput: React.FC<VkxInputProps> = ({
   children,
+  className, // add className prop
   defaultValue,
   description,
   endContent,
@@ -21,6 +22,7 @@ export const VkxInput: React.FC<VkxInputProps> = ({
 }) => {
   return (
     <Input
+      className={className} // add className to Input
       defaultValue={defaultValue}
       description={description}
       endContent={endContent}

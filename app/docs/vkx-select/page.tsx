@@ -3,7 +3,7 @@
 import React, { JSX } from "react";
 import { Avatar, Button } from "@heroui/react";
 
-import selectItems from "../../api/select-items.json";
+import selectItems from "../../../public/fake-data/select-items.json";
 
 import { VkxSelect } from "@/components/vkx-select/vkx-select";
 import { VkxSelectItem } from "@/components/vkx-select/vkx-select-item";

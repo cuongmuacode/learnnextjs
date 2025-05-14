@@ -24,7 +24,6 @@ interface VkxAutocompleteProps {
     | "success"
     | "warning"
     | "danger";
-  defaultValue?: string;
   description?: string;
   disabledKeys?: Set<any>;
   errorMessage?: string;
@@ -49,7 +48,6 @@ export function VkxAutocomplete({
   allowsCustomValue,
   className,
   color,
-  defaultValue,
   description,
   disabledKeys,
   errorMessage,
@@ -69,37 +67,37 @@ export function VkxAutocomplete({
   variant,
   vkxScrollShadowProps,
 }: VkxAutocompleteProps) {
+  // Adapt onClose to match Autocomplete's expected signature
+  const handleClose = () => {
+    if (onClose) onClose(false);
+  };
+
   return (
     <Autocomplete
       allowsCustomValue={allowsCustomValue}
       className={className}
       color={color}
-      defaultInputValue={defaultValue}
       description={description}
       disabledKeys={disabledKeys}
       errorMessage={errorMessage}
       isDisabled={isDisabled}
       isRequired={isRequired}
       label={label}
+      onClose={handleClose}
+      onInputChange={onInputChange}
+      onSelectionChange={onSelectionChange}
       placeholder={placeholder}
       readOnly={readOnly}
-      scrollShadowProps={{
-        isEnabled: vkxScrollShadowProps?.isEnabled,
-      }}
       selectedKey={selectedKey}
       selectorIcon={selectorIcon}
       size={size}
       startContent={startContent}
       variant={variant}
-      onClose={() => {
-        if (onClose) onClose(true);
-      }}
-      onInputChange={onInputChange}
-      onSelectionChange={onSelectionChange}
     >
       {options.map((option) => (
         <AutocompleteItem
           key={option.value}
+          description={option.description}
           startContent={option.startContent}
           textValue={option.textValue}
         >

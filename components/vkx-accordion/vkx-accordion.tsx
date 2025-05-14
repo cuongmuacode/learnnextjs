@@ -7,6 +7,7 @@ import { VkxAccordionProps } from "./vkx-accordion-props";
 
 export function VkxAccordion({
   accordionItems,
+  className,
   defaultExpandedKeys,
   disabledKeys,
   isCompact = false,
@@ -18,20 +19,22 @@ export function VkxAccordion({
 }: VkxAccordionProps) {
   return (
     <Accordion
+      className={className}
       defaultExpandedKeys={defaultExpandedKeys}
       disabledKeys={disabledKeys}
       isCompact={isCompact}
       motionProps={motionProps}
+      onSelectionChange={onSelectionChange}
       selectedKeys={selectedKeys}
       selectionMode={selectionMode}
       variant={variant}
-      onSelectionChange={onSelectionChange}
     >
       {accordionItems.map((item) => (
         <AccordionItem
-          key={item.key}
           aria-label={item.ariaLabel}
+          className={item.className}
           indicator={item.indicator}
+          key={item.key}
           startContent={item.startContent}
           subtitle={item.subtitle}
           textValue={item.titleText}

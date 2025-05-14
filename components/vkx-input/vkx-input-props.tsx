@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export interface VkxInputProps {
   children?: ReactNode;
+  className?: string; // add className prop
   type?:
     | "text"
     | "search"

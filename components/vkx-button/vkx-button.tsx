@@ -4,21 +4,23 @@ import { VkxButtonProps } from "./vkx-button-props";
 
 const VkxButton: React.FC<VkxButtonProps> = ({
   children,
+  className,
   color,
   isDisabled,
   isIconOnly,
   isLoading,
-  startContent,
   onPress,
+  startContent,
 }) => {
   return (
     <Button
+      className={className}
       color={color}
       isDisabled={isDisabled}
       isIconOnly={isIconOnly}
       isLoading={isLoading}
-      startContent={startContent}
       onPress={onPress}
+      startContent={startContent}
     >
       {children}
     </Button>

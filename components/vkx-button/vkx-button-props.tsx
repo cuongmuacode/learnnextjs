@@ -1,6 +1,7 @@
 import { PressEvent } from "@react-types/shared";
 export interface VkxButtonProps {
   children: React.ReactNode;
+  className?: string; // add className prop
   color?:
     | "default"
     | "primary"

@@ -24,7 +24,7 @@ export default function DocsLayout({
     { name: "Button", href: "/docs/vkx-button" },
     { name: "Calendar", href: "/docs/vkx-calendar" },
     { name: "Card", href: "/docs/vkx-card" },
-    { name: "Checkbox", href: "/docs/vkx-checkbox", status: "Updated" },
+    { name: "Checkbox", href: "/docs/vkx-checkbox" },
     { name: "Checkbox Group", href: "/docs/vkx-checkbox-group" },
     { name: "Chip", href: "/docs/vkx-chip" },
     { name: "Circular Progress", href: "/docs/vkx-circular-progress" },
@@ -35,8 +35,8 @@ export default function DocsLayout({
     { name: "Divider", href: "/docs/vkx-divider" },
     { name: "Drawer", href: "/docs/vkx-drawer" },
     { name: "Dropdown", href: "/docs/vkx-dropdown" },
-    { name: "Input", href: "/docs/vkx-input", status: "Updated" },
-    { name: "Select", href: "/docs/vkx-select", status: "Updated" },
+    { name: "Input", href: "/docs/vkx-input" },
+    { name: "Select", href: "/docs/vkx-select" },
   ];
 
   return (
@@ -65,7 +65,7 @@ export default function DocsLayout({
                         "hover:bg-default-100",
                         pathname === item.href
                           ? "bg-default-100 text-default-foreground"
-                          : "text-default-500",
+                          : "text-default-500"
                       )}
                       href={item.href}
                     >
@@ -83,6 +83,7 @@ export default function DocsLayout({
               ),
             },
           ]}
+          className="pb-16"
           defaultExpandedKeys={new Set(["component"])}
         />
       </div>

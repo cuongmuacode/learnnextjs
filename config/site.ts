@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "HeroUI example",
+  name: "Tài liệu HeroUi",
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
     {

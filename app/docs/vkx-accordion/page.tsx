@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
 
-import accordionItems from "../../api/accordions.json";
+import accordionItems from "../../../public/fake-data/accordions.json";
 
 import { VkxAccordion } from "@/components/vkx-accordion/vkx-accordion";
 import { VkxAccordionProps } from "@/components/vkx-accordion/vkx-accordion-props";
@@ -48,7 +48,7 @@ export default function VkxAccordionPage() {
           src={item.imageUrl}
         />
       ),
-    }),
+    })
   );
 
   var accordionItemsWithSubtitle = accordionItems.map((item) => ({

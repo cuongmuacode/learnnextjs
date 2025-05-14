@@ -12,4 +12,5 @@ export interface VkxAccordionProps {
   selectedKeys?: Set<string>;
   selectionMode?: SelectionMode;
   variant?: "splitted" | "bordered" | "light" | "shadow";
+  className?: string | undefined;
 }

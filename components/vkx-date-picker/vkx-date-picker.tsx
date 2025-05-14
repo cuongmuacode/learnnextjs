@@ -1,5 +1,6 @@
 import { DatePicker, DateValue } from "@heroui/react";
-import React from "react";
+import { ValidationResult } from "@react-types/shared";
+import React, { ReactNode } from "react";
 
 export interface VkxDatePickerProps {
   label?: string;
@@ -9,26 +10,36 @@ export interface VkxDatePickerProps {
   onChange?: (date: DateValue | null) => void;
   isDisabled?: boolean;
   isInvalid?: boolean;
-  errorMessage?: string;
+  errorMessage?: ReactNode | ((value: ValidationResult) => ReactNode);
   description?: string;
   minValue: DateValue;
   maxValue?: DateValue;
   className?: string;
+  showMonthAndYearPickers?: boolean;
+  isReadOnly?: boolean;
+  visibleMonths?: number;
+  granularity?: "day" | "hour" | "minute" | "second";
+  isDateUnavailable?: (date: DateValue) => boolean;
 }
 
 export const VkxDatePicker: React.FC<VkxDatePickerProps> = ({
-  label,
-  placeholder,
-  value,
+  className,
   defaultValue,
-  onChange,
+  description,
+  errorMessage,
+  granularity,
+  isDateUnavailable,
   isDisabled,
   isInvalid,
-  errorMessage,
-  description,
-  minValue,
+  isReadOnly,
+  label,
   maxValue,
-  className,
+  minValue,
+  onChange,
+  placeholder,
+  showMonthAndYearPickers,
+  value,
+  visibleMonths,
   ...props
 }) => {
   return (
@@ -37,14 +48,19 @@ export const VkxDatePicker: React.FC<VkxDatePickerProps> = ({
       defaultValue={defaultValue}
       description={description}
       errorMessage={errorMessage}
+      granularity={granularity}
+      isDateUnavailable={isDateUnavailable}
       isDisabled={isDisabled}
       isInvalid={isInvalid}
+      isReadOnly={isReadOnly}
       label={label}
       maxValue={maxValue}
       minValue={minValue}
-      placeholderValue={placeholder}
-      value={value}
       onChange={onChange}
+      placeholderValue={placeholder}
+      showMonthAndYearPickers={showMonthAndYearPickers}
+      value={value}
+      visibleMonths={visibleMonths}
       {...props}
     />
   );

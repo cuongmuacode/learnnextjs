@@ -9,4 +9,5 @@ export interface VkxAccordionItemProps {
   ariaLabel?: string;
   startContent?: ReactNode;
   indicator?: ReactNode;
+  className?: string | undefined;
 }
