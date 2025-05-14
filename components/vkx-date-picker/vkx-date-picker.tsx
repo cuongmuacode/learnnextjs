@@ -54,6 +54,7 @@ export const VkxDatePicker: React.FC<VkxDatePickerProps> = ({
       isInvalid={isInvalid}
       isReadOnly={isReadOnly}
       label={label}
+      
       maxValue={maxValue}
       minValue={minValue}
       onChange={onChange}

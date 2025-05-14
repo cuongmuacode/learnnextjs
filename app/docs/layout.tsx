@@ -36,7 +36,9 @@ export default function DocsLayout({
     { name: "Drawer", href: "/docs/vkx-drawer" },
     { name: "Dropdown", href: "/docs/vkx-dropdown" },
     { name: "Input", href: "/docs/vkx-input" },
+    { name: "Link", href: "/docs/vkx-link" },
     { name: "Select", href: "/docs/vkx-select" },
+    { name: "TextArea", href: "/docs/vkx-text-area" },
   ];
 
   return (
