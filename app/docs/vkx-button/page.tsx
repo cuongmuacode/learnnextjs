@@ -119,6 +119,21 @@ export default function VkxButtonPage() {
                   Nội dung hiển thị bên trong button
                 </td>
               </tr>
+
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  type
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;button&quot; | &quot;reset&quot; | &quot;submit&quot;
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Loại button 
+                </td>
+              </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
                   isDisabled

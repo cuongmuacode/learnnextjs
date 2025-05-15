@@ -44,7 +44,6 @@ export default function VkxAutocompletePage() {
         isRequired
         readOnly
         className="max-w-xs"
-        defaultValue="Python"
         disabledKeys={new Set(["python"])}
         isDisabled={false}
         label="Programming Language"
@@ -57,7 +56,6 @@ export default function VkxAutocompletePage() {
         isRequired
         className="max-w-xs"
         color="secondary"
-        defaultValue="Python"
         description="Description programming"
         disabledKeys={new Set(["python"])}
         isDisabled={false}

@@ -13,6 +13,7 @@ export interface VkxButtonProps {
   isDisabled?: boolean;
   isLoading?: boolean;
   startContent?: React.ReactNode;
+  type?: "button" | "submit" | "reset";
   isIconOnly?: boolean;
   onPress?: ((e: PressEvent) => void) | undefined;
 }

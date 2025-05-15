@@ -29,10 +29,7 @@ export interface VkxFormProps
   style?: CSSProperties;
 }
 
-/**
- * VkxForm là một wrapper cho HeroUI Form component.
- * Hỗ trợ validation, accessibility và các props chuẩn của HeroUI Form.
- */
+
 export const VkxForm: React.FC<VkxFormProps> = ({
   children,
   className = "",

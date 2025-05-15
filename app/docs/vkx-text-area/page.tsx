@@ -226,8 +226,8 @@ export default function VkxTextAreaPage() {
               </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">labelPlacement</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">"inside" | "outside" | "outside-left"</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">"outside"</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">&quot;inside&quot; | &quot;outside&quot; | &quot;outside-left&quot;</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">&quot;outside&quot;</td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Vị trí nhãn</td>
               </tr>
               <tr>
