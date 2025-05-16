@@ -14,16 +14,42 @@ export default function DocsLayout({
 }) {
   const pathname = usePathname();
 
-  const components: NavigationModels[] = [
-    { name: "Accordion", href: "/docs/vkx-accordion" },
+  const formComponents: NavigationModels[] = [
+    { name: "Autocomplete", href: "/docs/vkx-autocomplete" },
     { name: "Button", href: "/docs/vkx-button" },
     { name: "Checkbox", href: "/docs/vkx-checkbox" },
-    { name: "Date Picker", href: "/docs/vkx-date-picker" },
+    { name: "Calendar", href: "/docs/vkx-calendar" },
+
+    { name: "CheckboxGroup", href: "/docs/vkx-checkbox-group" },
+    { name: "DatePicker", href: "/docs/vkx-date-picker" },
+    { name: "DateInput", href: "/docs/vkx-date-input" },
+    { name: "MonthPicker", href: "/docs/vkx-month-picker" },
+    { name: "YearPicker", href: "/docs/vkx-year-picker" },
+
+    { name: "DateRangePicker", href: "/docs/vkx-date-range-picker" },
+
     { name: "Form", href: "/docs/vkx-form" },
     { name: "Input", href: "/docs/vkx-input" },
     { name: "Link", href: "/docs/vkx-link" },
+    { name: "Popover", href: "/docs/vkx-popover" },
+    { name: "RadioGroup", href: "/docs/vkx-radio-group" },
+    { name: "RangeCalender", href: "/docs/vkx-range-calender" },
+
     { name: "Select", href: "/docs/vkx-select" },
+    { name: "Switch", href: "/docs/vkx-switch" },
+    { name: "Slider", href: "/docs/vkx-slider" },
+    { name: "Snippet", href: "/docs/vkx-snippet" },
+    { name: "Skeleton", href: "/docs/vkx-skeleton" },
     { name: "TextArea", href: "/docs/vkx-text-area" },
+    { name: "TimeInput", href: "/docs/vkx-time-input" },
+
+    { name: "Table", href: "/docs/vkx-table" },
+    { name: "Tooltip", href: "/docs/vkx-tooltip" },
+  ];
+  const layoutComponents: NavigationModels[] = [];
+  const notificationComponents: NavigationModels[] = [];
+  const displayComponents: NavigationModels[] = [
+    { name: "Accordion", href: "/docs/vkx-accordion" },
   ];
 
   return (
@@ -34,43 +60,163 @@ export default function DocsLayout({
           overflow-y-auto fixed left-0 top-16 dark:bg-black border-r border-divider"
       >
         <VkxAccordion
+          className="pb-16"
           accordionItems={[
             {
               key: "component",
               title: (
-                <h2 className="text-xl font-semibold text-foreground">
+                <p className="text-xl font-semibold text-foreground">
                   Components
-                </h2>
+                </p>
               ),
               children: (
-                <nav className="flex flex-col gap-1">
-                  {components.map((item) => (
-                    <Link
-                      key={item.name}
-                      className={clsx(
-                        "px-3 py-2 rounded-lg transition-colors",
-                        "hover:bg-default-100",
-                        pathname === item.href
-                          ? "bg-default-100 text-default-foreground"
-                          : "text-default-500"
-                      )}
-                      href={item.href}
-                    >
-                      <div className="flex items-center justify-between gap-2">
-                        <span>{item.name}</span>
-                        {item.status && (
-                          <span className="text-xs text-primary-500">
-                            {item.status}
-                          </span>
-                        )}
-                      </div>
-                    </Link>
-                  ))}
-                </nav>
+                <VkxAccordion                  
+                  accordionItems={[
+                    // Form components
+                    {
+                      key: "form-components",
+                      title: (
+                        <h3 className="text-lg font-semibold text-foreground">
+                          Form
+                        </h3>
+                      ),
+                      children: (
+                        <nav className="flex flex-col gap-1">
+                          {formComponents.map((item) => (
+                            <Link
+                              key={item.name}
+                              className={clsx(
+                                "px-3 py-2 rounded-lg transition-colors",
+                                "hover:bg-default-100",
+                                pathname === item.href
+                                  ? "bg-default-100 text-default-foreground"
+                                  : "text-default-500"
+                              )}
+                              href={item.href}
+                            >
+                              <div className="flex items-center justify-between gap-2">
+                                <span>{item.name}</span>
+                                {item.status && (
+                                  <span className="text-xs text-primary-500">
+                                    {item.status}
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </nav>
+                      ),
+                    },
+                    // Layout components
+                    {
+                      key: "layout-components",
+                      title: (
+                        <p className="text-lg font-semibold text-foreground">
+                          Layout
+                        </p>
+                      ),
+                      children: (
+                        <nav className="flex flex-col gap-1">
+                          {layoutComponents.map((item) => (
+                            <Link
+                              key={item.name}
+                              className={clsx(
+                                "px-3 py-2 rounded-lg transition-colors",
+                                "hover:bg-default-100",
+                                pathname === item.href
+                                  ? "bg-default-100 text-default-foreground"
+                                  : "text-default-500"
+                              )}
+                              href={item.href}
+                            >
+                              <div className="flex items-center justify-between gap-2">
+                                <span>{item.name}</span>
+                                {item.status && (
+                                  <span className="text-xs text-primary-500">
+                                    {item.status}
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </nav>
+                      ),
+                    },
+                    // Notification components
+                    {
+                      key: "notification-components",
+                      title: (
+                        <h3 className="text-lg font-semibold text-foreground">
+                          Notification
+                        </h3>
+                      ),
+                      children: (
+                        <nav className="flex flex-col gap-1">
+                          {notificationComponents.map((item) => (
+                            <Link
+                              key={item.name}
+                              className={clsx(
+                                "px-3 py-2 rounded-lg transition-colors",
+                                "hover:bg-default-100",
+                                pathname === item.href
+                                  ? "bg-default-100 text-default-foreground"
+                                  : "text-default-500"
+                              )}
+                              href={item.href}
+                            >
+                              <div className="flex items-center justify-between gap-2">
+                                <span>{item.name}</span>
+                                {item.status && (
+                                  <span className="text-xs text-primary-500">
+                                    {item.status}
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </nav>
+                      ),
+                    },
+                    // Display components
+                    {
+                      key: "display-component",
+                      title: (
+                        <p className="text-lg font-semibold text-foreground">
+                          Display
+                        </p>
+                      ),
+                      children: (
+                        <nav className="flex flex-col gap-1">
+                          {displayComponents.map((item) => (
+                            <Link
+                              key={item.name}
+                              className={clsx(
+                                "px-3 py-2 rounded-lg transition-colors",
+                                "hover:bg-default-100",
+                                pathname === item.href
+                                  ? "bg-default-100 text-default-foreground"
+                                  : "text-default-500"
+                              )}
+                              href={item.href}
+                            >
+                              <div className="flex items-center justify-between gap-2">
+                                <span>{item.name}</span>
+                                {item.status && (
+                                  <span className="text-xs text-primary-500">
+                                    {item.status}
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </nav>
+                      ),
+                    },
+                  ]}
+                />
               ),
             },
           ]}
-          className="pb-16"
           defaultExpandedKeys={new Set(["component"])}
         />
       </div>
