@@ -131,7 +131,7 @@ export default function VkxButtonPage() {
                   &quot;button&quot; | &quot;reset&quot; | &quot;submit&quot;
                 </td>
                 <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
-                  Loại button 
+                  Loại button
                 </td>
               </tr>
               <tr>
