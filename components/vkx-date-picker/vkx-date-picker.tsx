@@ -56,11 +56,11 @@ export const VkxDatePicker: React.FC<VkxDatePickerProps> = ({
       label={label}
       maxValue={maxValue}
       minValue={minValue}
-      onChange={onChange}
       placeholderValue={placeholder}
       showMonthAndYearPickers={showMonthAndYearPickers}
       value={value}
       visibleMonths={visibleMonths}
+      onChange={onChange}
       {...props}
     />
   );

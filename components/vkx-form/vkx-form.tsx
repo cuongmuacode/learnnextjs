@@ -36,17 +36,17 @@ export const VkxForm: React.FC<VkxFormProps> = ({
 }) => {
   return (
     <HeroUIForm
-      className={className}
-      validationBehavior={validationBehavior}
-      validationErrors={validationErrors}
       action={action}
+      autoCapitalize={autoCapitalize}
+      autoComplete={autoComplete}
+      className={className}
       encType={encType}
       method={method}
       role={role}
-      target={target}
-      autoComplete={autoComplete}
-      autoCapitalize={autoCapitalize}
       style={style}
+      target={target}
+      validationBehavior={validationBehavior}
+      validationErrors={validationErrors}
       {...props}
     >
       {children}

@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import {
   Autocomplete,
   AutocompleteItem,
-  AutocompleteProps,
+  ScrollShadowProps,
 } from "@heroui/react";
 import { Key } from "@react-types/shared";
 
@@ -15,11 +15,11 @@ export interface VkxAutocompleteOption {
   startContent?: ReactNode;
 }
 
-export interface VkxScrollShadowProps {
+export interface VkxScrollShadowProps extends ScrollShadowProps {
   isEnabled?: boolean;
 }
 
-interface VkxAutocompleteProps extends AutocompleteProps {
+interface VkxAutocompleteProps {
   allowsCustomValue?: boolean;
   className?: string;
   color?:
@@ -71,6 +71,7 @@ export function VkxAutocomplete({
   startContent,
   variant,
   scrollShadowProps,
+  ...props
 }: VkxAutocompleteProps) {
   return (
     <Autocomplete
@@ -83,17 +84,18 @@ export function VkxAutocomplete({
       isDisabled={isDisabled}
       isRequired={isRequired}
       label={label}
-      onClose={onClose}
-      onInputChange={onInputChange}
-      onSelectionChange={onSelectionChange}
       placeholder={placeholder}
       readOnly={readOnly}
+      scrollShadowProps={scrollShadowProps}
       selectedKey={selectedKey}
       selectorIcon={selectorIcon}
       size={size}
       startContent={startContent}
       variant={variant}
-      scrollShadowProps={scrollShadowProps}
+      onClose={onClose}
+      onInputChange={onInputChange}
+      onSelectionChange={onSelectionChange}
+      {...props}
     >
       {options.map((option) => (
         <AutocompleteItem

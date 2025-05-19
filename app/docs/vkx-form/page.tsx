@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+
 import { VkxForm } from "@/components/vkx-form/vkx-form";
 import { VkxInput } from "@/components/vkx-input/vkx-input";
 import VkxButton from "@/components/vkx-button/vkx-button";
@@ -12,6 +13,7 @@ export default function VkxFormPage() {
     e.preventDefault();
     const fromData = new FormData(e.currentTarget);
     const data = Object.fromEntries(fromData);
+
     setSubmitted(data);
     console.log(data);
   };
@@ -24,6 +26,7 @@ export default function VkxFormPage() {
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errors: Record<string, string> = {};
+
     if (!formData.email) errors.email = "Email is required & must be valid";
     if (!formData.password)
       errors.password = "Password is required <min 8 chars>";
@@ -45,16 +48,16 @@ export default function VkxFormPage() {
           1. Form cơ bản
         </h1>
         <VkxForm
-          onSubmit={onSubmit}
-          method="post"
           className="flex flex-col gap-4 max-w-md"
+          method="post"
+          onSubmit={onSubmit}
         >
           <VkxInput
             isRequired
-            name="userName"
-            label="User name"
             errorMessage="Please enter a valid email"
+            label="User name"
             labelPlacement="outside"
+            name="userName"
             placeholder="Enter your email"
             type="text"
           />
@@ -72,17 +75,17 @@ export default function VkxFormPage() {
           2. Form có kiểm soát (controlled)
         </h1>
         <VkxForm
-          onSubmit={handleLoginSubmit}
-          validationErrors={validationErrors}
-          validationBehavior="aria"
           className="flex flex-col gap-4 max-w-md"
+          validationBehavior="aria"
+          validationErrors={validationErrors}
+          onSubmit={handleLoginSubmit}
         >
           <div>
             <VkxInput
+              placeholder="Email"
               type="email"
               value={formData.email}
               onValueChange={(e) => handleInputChange("email", e)}
-              placeholder="Email"
             />
             {validationErrors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -92,10 +95,10 @@ export default function VkxFormPage() {
           </div>
           <div>
             <VkxInput
+              placeholder="Password"
               type="password"
               value={formData.password}
               onValueChange={(e) => handleInputChange("password", e)}
-              placeholder="Password"
             />
             {validationErrors.password && (
               <p className="text-red-500 text-sm mt-1">
@@ -104,7 +107,7 @@ export default function VkxFormPage() {
             )}
           </div>
           <div className="flex gap-2">
-            <VkxButton type="submit" color="primary">
+            <VkxButton color="primary" type="submit">
               Login
             </VkxButton>
             <VkxButton type="reset">Reset</VkxButton>
@@ -120,15 +123,14 @@ export default function VkxFormPage() {
           3. Form với validation behavior aria
         </h1>
         <VkxForm
-          validationBehavior="aria"
           className="flex flex-col gap-4 max-w-md"
+          validationBehavior="aria"
         >
           <VkxInput
             isRequired
-            type="username"
             label="Username"
             placeholder="Enter your username"
-            onValueChange={(e) => handleInputChange("email", e)}
+            type="username"
             validate={(value) => {
               if (value.length < 3) {
                 return "Username must be at least 3 characters long";
@@ -136,6 +138,7 @@ export default function VkxFormPage() {
 
               return value === "admin" ? "Nice try!" : null;
             }}
+            onValueChange={(e) => handleInputChange("email", e)}
           />
           <VkxButton type="submit">Submit</VkxButton>
         </VkxForm>
@@ -147,8 +150,8 @@ export default function VkxFormPage() {
         </h1>
         <VkxForm autoComplete="on" className="flex flex-col gap-4 max-w-md">
           <VkxInput
-            type="text"
             placeholder="Full Name &amp; Title"
+            type="text"
             onValueChange={(e) => handleInputChange("email", e)}
           />
           <VkxButton type="submit">Save</VkxButton>

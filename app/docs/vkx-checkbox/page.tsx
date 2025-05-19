@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import VkxCheckbox from "@/components/vkx-checkbox/vkx-checkbox";
 
 export default function VkxCheckboxPage() {

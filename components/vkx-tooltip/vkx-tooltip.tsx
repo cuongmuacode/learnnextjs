@@ -42,7 +42,6 @@ export interface VkxTooltipProps extends TooltipProps {
 }
 
 export const VkxTooltip: React.FC<VkxTooltipProps> = ({
-  children,
   classNames,
   closeDelay = 500,
   color = "default",
@@ -75,7 +74,6 @@ export const VkxTooltip: React.FC<VkxTooltipProps> = ({
 }) => {
   return (
     <Tooltip
-      children={children}
       classNames={classNames}
       closeDelay={closeDelay}
       color={color}
@@ -91,8 +89,6 @@ export const VkxTooltip: React.FC<VkxTooltipProps> = ({
       isOpen={isOpen}
       motionProps={motionProps}
       offset={offset}
-      onClose={onClose}
-      onOpenChange={onOpenChange}
       placement={placement}
       portalContainer={portalContainer}
       radius={radius}
@@ -104,6 +100,8 @@ export const VkxTooltip: React.FC<VkxTooltipProps> = ({
       size={size}
       triggerScaleOnOpen={triggerScaleOnOpen}
       updatePositionDeps={updatePositionDeps}
+      onClose={onClose}
+      onOpenChange={onOpenChange}
       {...props}
     />
   );

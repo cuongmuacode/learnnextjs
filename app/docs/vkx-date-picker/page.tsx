@@ -1,17 +1,17 @@
 "use client";
 import React from "react";
-import { VkxDatePicker } from "@/components/vkx-date-picker/vkx-date-picker";
 import {
   today,
   parseDate,
   parseDateTime,
   DateValue,
 } from "@internationalized/date";
-import { I18nProvider } from "@react-aria/i18n";
+
+import { VkxDatePicker } from "@/components/vkx-date-picker/vkx-date-picker";
 
 export default function VkxDatePickerPage() {
   const [selectedDate, setSelectedDate] = React.useState<DateValue | null>(
-    null
+    null,
   );
   const [error, setError] = React.useState("");
   const minValue = parseDate("2020-01-01");
@@ -29,8 +29,8 @@ export default function VkxDatePickerPage() {
         <VkxDatePicker
           className="max-w-xs"
           label="Chọn ngày sinh"
-          placeholder={placeholderDate}
           minValue={minValue}
+          placeholder={placeholderDate}
         />
       </div>
 
@@ -44,8 +44,8 @@ export default function VkxDatePickerPage() {
           isDisabled
           className="max-w-xs"
           label="Chọn ngày sinh"
-          placeholder={placeholderDate}
           minValue={minValue}
+          placeholder={placeholderDate}
         />
       </div>
 
@@ -59,8 +59,8 @@ export default function VkxDatePickerPage() {
           isReadOnly
           className="max-w-xs"
           label="Chọn ngày sinh (readonly)"
-          placeholder={placeholderDate}
           minValue={minValue}
+          placeholder={placeholderDate}
         />
       </div>
 
@@ -72,11 +72,11 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Chọn ngày sinh"
-          placeholder={placeholderDate}
-          minValue={minValue}
-          isInvalid={!!error}
           errorMessage={error}
+          isInvalid={!!error}
+          label="Chọn ngày sinh"
+          minValue={minValue}
+          placeholder={placeholderDate}
           value={selectedDate}
           onChange={(date) => {
             setSelectedDate(date);
@@ -94,10 +94,10 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Chọn ngày sinh"
           description="Hãy chọn ngày sinh của bạn để nhận ưu đãi sinh nhật!"
-          placeholder={placeholderDate}
+          label="Chọn ngày sinh"
           minValue={minValue}
+          placeholder={placeholderDate}
         />
       </div>
 
@@ -110,9 +110,9 @@ export default function VkxDatePickerPage() {
         <VkxDatePicker
           className="max-w-xs"
           label="Chọn ngày trong khoảng cho phép"
-          placeholder={placeholderDate}
-          minValue={minValue}
           maxValue={maxValue}
+          minValue={minValue}
+          placeholder={placeholderDate}
         />
       </div>
 
@@ -125,9 +125,9 @@ export default function VkxDatePickerPage() {
         <VkxDatePicker
           className="max-w-xs"
           label="Chọn ngày (controlled)"
+          minValue={minValue}
           value={selectedDate}
           onChange={setSelectedDate}
-          minValue={minValue}
         />
         <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
           Ngày đã chọn: {selectedDate ? selectedDate.toString() : "Chưa chọn"}
@@ -143,8 +143,8 @@ export default function VkxDatePickerPage() {
         <VkxDatePicker
           className="max-w-xs"
           label="Chọn ngày (có Month/Year pickers)"
-          placeholder={placeholderDate}
           minValue={minValue}
+          placeholder={placeholderDate}
           showMonthAndYearPickers={true}
         />
         <p className="mt-2 text-sm text-gray-500">
@@ -160,12 +160,12 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Chọn ngày với preset"
-          value={parseDateTime("2025-05-13T00:00")}
-          placeholder={placeholderDate}
-          minValue={minValue}
-          maxValue={maxValue}
           granularity="minute"
+          label="Chọn ngày với preset"
+          maxValue={maxValue}
+          minValue={minValue}
+          placeholder={placeholderDate}
+          value={parseDateTime("2025-05-13T00:00")}
         />
         <p className="mt-2 text-sm text-gray-500">
           Sử dụng <code>parseDateTime("2025-05-13T00:00")</code> để đặt giá trị
@@ -184,11 +184,11 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Birth date"
-          placeholder={placeholderDate}
-          minValue={minValue}
-          isInvalid={!!error}
           errorMessage={error || "Please enter a valid date."}
+          isInvalid={!!error}
+          label="Birth date"
+          minValue={minValue}
+          placeholder={placeholderDate}
           value={selectedDate}
           onChange={(date) => {
             setSelectedDate(date);
@@ -214,19 +214,21 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Birth date (function errorMessage)"
-          placeholder={placeholderDate}
-          minValue={minValue}
           errorMessage={(validationResult) => {
             if (validationResult.isInvalid) {
               if (validationResult.validationDetails?.rangeUnderflow)
                 return `Date must be after ${minValue.toString()}`;
               if (validationResult.validationDetails?.rangeOverflow)
                 return `Date must be before ${maxValue.toString()}`;
+
               return "Please enter a valid date.";
             }
+
             return "";
           }}
+          label="Birth date (function errorMessage)"
+          minValue={minValue}
+          placeholder={placeholderDate}
           value={selectedDate}
           onChange={(date) => {
             setSelectedDate(date);
@@ -248,18 +250,19 @@ export default function VkxDatePickerPage() {
       <div>
         <VkxDatePicker
           className="max-w-xs"
-          label="Chọn ngày (một số ngày không khả dụng)"
-          placeholder={placeholderDate}
-          minValue={minValue}
-          maxValue={maxValue}
           isDateUnavailable={(date) => {
             // Đánh dấu ngày 2025-05-20 và 2025-05-25 là không khả dụng
             const unavailable = [
               parseDate("2025-05-20"),
               parseDate("2025-05-25"),
             ];
+
             return unavailable.some((d) => d.toString() === date.toString());
           }}
+          label="Chọn ngày (một số ngày không khả dụng)"
+          maxValue={maxValue}
+          minValue={minValue}
+          placeholder={placeholderDate}
         />
         <p className="mt-2 text-sm text-gray-500">
           Sử dụng prop <code>isDateUnavailable</code> để đánh dấu các ngày không

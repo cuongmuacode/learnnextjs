@@ -68,11 +68,6 @@ export const VkxLink: React.FC<VkxLinkProps> = ({
       isBlock={isBlock}
       isDisabled={isDisabled}
       isExternal={isExternal}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      onPress={onPress}
-      onPressEnd={onPressEnd}
-      onPressStart={onPressStart}
       ping={ping}
       referrerPolicy={referrerPolicy}
       rel={rel}
@@ -80,6 +75,11 @@ export const VkxLink: React.FC<VkxLinkProps> = ({
       size={size}
       target={target}
       underline={underline}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      onPress={onPress}
+      onPressEnd={onPressEnd}
+      onPressStart={onPressStart}
       {...props}
     >
       {children}

@@ -16,7 +16,7 @@ export interface VkxButtonProps extends ButtonProps {
   startContent?: React.ReactNode;
   type?: "button" | "submit" | "reset";
   isIconOnly?: boolean;
-  variant:
+  variant?:
     | "solid"
     | "bordered"
     | "light"

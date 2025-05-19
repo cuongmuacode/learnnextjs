@@ -39,7 +39,6 @@ export default function VkxAutocompletePage() {
         options={autocompleteOptions}
         placeholder="Select a programming language"
       />
-
       <VkxAutocomplete
         isRequired
         readOnly
@@ -62,16 +61,18 @@ export default function VkxAutocompletePage() {
         label="Programming Language"
         options={autocompleteOptions}
         placeholder="Select a programming language"
+        scrollShadowProps={{
+          isEnabled: true,
+        }}
         selectedKey={key}
         selectorIcon={<PetIcon className="text-xl" />}
         size="md"
         startContent={<PetIcon className="text-xl" />}
         variant="bordered"
-        vkxScrollShadowProps={{
-          isEnabled: true,
-        }}
         onInputChange={setInputValue}
-        onSelectionChange={setValue}
+        onSelectionChange={(key) => {
+          setValue(key as string);
+        }}
       />
       <p className="mt-1 text-small text-default-500">
         Current input value: {inputValue}

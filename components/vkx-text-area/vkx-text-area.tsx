@@ -50,10 +50,10 @@ export const VkxTextArea: React.FC<VkxTextAreaProps> = ({
       labelPlacement={labelPlacement}
       maxRows={maxRows}
       minRows={minRows}
-      onValueChange={onValueChange}
       placeholder={placeholder}
       readOnly={readOnly}
       value={value}
+      onValueChange={onValueChange}
       {...props}
     />
   );

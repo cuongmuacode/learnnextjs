@@ -1,23 +1,27 @@
 "use client";
 
 import React from "react";
+
 import { VkxTextArea } from "@/components/vkx-text-area/vkx-text-area";
 
 function CharacterCountTextArea() {
   const [value, setValue] = React.useState("");
   const maxLength = 200;
+
   return (
     <div className="max-w-lg">
       <VkxTextArea
+        description={`Số ký tự: ${value.length}/${maxLength}`}
+        errorMessage={
+          value.length > maxLength ? `Vượt quá ${maxLength} ký tự!` : ""
+        }
+        isInvalid={value.length > maxLength}
         label="Mô tả có bộ đếm ký tự"
+        maxRows={6}
+        minRows={2}
         placeholder="Nhập mô tả..."
         value={value}
         onValueChange={setValue}
-        description={`Số ký tự: ${value.length}/${maxLength}`}
-        maxRows={6}
-        minRows={2}
-        isInvalid={value.length > maxLength}
-        errorMessage={value.length > maxLength ? `Vượt quá ${maxLength} ký tự!` : ""}
       />
     </div>
   );
@@ -25,14 +29,15 @@ function CharacterCountTextArea() {
 
 function ControlledTextAreaExample() {
   const [controlledValue, setControlledValue] = React.useState("");
+
   return (
     <div className="max-w-lg">
       <VkxTextArea
+        description="Ví dụ sử dụng value và onValueChange để kiểm soát giá trị."
         label="Controlled TextArea"
         placeholder="Nhập nội dung..."
         value={controlledValue}
         onValueChange={setControlledValue}
-        description="Ví dụ sử dụng value và onValueChange để kiểm soát giá trị."
       />
       <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
         Giá trị hiện tại: <span className="font-mono">{controlledValue}</span>
@@ -52,9 +57,9 @@ export default function VkxTextAreaPage() {
         </h1>
         <VkxTextArea
           className="max-w-lg"
+          description="Hãy nhập mô tả chi tiết cho sản phẩm của bạn."
           label="Mô tả"
           placeholder="Nhập mô tả..."
-          description="Hãy nhập mô tả chi tiết cho sản phẩm của bạn."
         />
       </div>
 
@@ -64,12 +69,12 @@ export default function VkxTextAreaPage() {
         </h1>
         <VkxTextArea
           className="max-w-lg"
+          errorMessage={!value ? "Vui lòng nhập mô tả" : ""}
+          isInvalid={!value}
           label="Mô tả bắt buộc"
           placeholder="Nhập mô tả..."
           value={value}
           onValueChange={setValue}
-          isInvalid={!value}
-          errorMessage={!value ? "Vui lòng nhập mô tả" : ""}
         />
       </div>
 
@@ -80,9 +85,9 @@ export default function VkxTextAreaPage() {
         <VkxTextArea
           className="max-w-lg"
           label="Mô tả co giãn"
-          placeholder="Nhập mô tả..."
-          minRows={2}
           maxRows={6}
+          minRows={2}
+          placeholder="Nhập mô tả..."
         />
       </div>
 
@@ -98,10 +103,10 @@ export default function VkxTextAreaPage() {
           5. TextArea disabled
         </h1>
         <VkxTextArea
+          isDisabled
           className="max-w-lg"
           label="Không thể nhập"
           placeholder="Không thể nhập"
-          isDisabled
         />
       </div>
 
@@ -110,10 +115,10 @@ export default function VkxTextAreaPage() {
           6. TextArea readOnly
         </h1>
         <VkxTextArea
+          readOnly
           className="max-w-lg"
           label="Chỉ đọc"
           value="Nội dung chỉ đọc"
-          readOnly
         />
       </div>
 
@@ -129,12 +134,12 @@ export default function VkxTextAreaPage() {
           8. TextArea không tự động co giãn (disableAutosize)
         </h1>
         <VkxTextArea
-          className="max-w-lg"
-          label="Không autosize"
-          placeholder="Nhập nội dung..."
-          minRows={4}
           disableAutosize
+          className="max-w-lg"
           description="Textarea này không tự động thay đổi chiều cao."
+          label="Không autosize"
+          minRows={4}
+          placeholder="Nhập nội dung..."
         />
       </div>
 
@@ -165,88 +170,201 @@ export default function VkxTextAreaPage() {
             </thead>
             <tbody className="bg-white dark:bg-gray-900">
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">className</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Class Tailwind tuỳ chỉnh</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  className
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Class Tailwind tuỳ chỉnh
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">label</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">ReactNode</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Nhãn hiển thị cho textarea</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  label
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  ReactNode
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Nhãn hiển thị cho textarea
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">placeholder</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Gợi ý nhập liệu</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  placeholder
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Gợi ý nhập liệu
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">defaultValue</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Giá trị mặc định</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  defaultValue
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Giá trị mặc định
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">value</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Giá trị textarea (controlled)</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  value
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Giá trị textarea (controlled)
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">onValueChange</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">(value: string) =&gt; void</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Hàm callback khi thay đổi giá trị</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  onValueChange
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  (value: string) =&gt; void
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Hàm callback khi thay đổi giá trị
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isDisabled</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Vô hiệu hóa textarea</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isDisabled
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Vô hiệu hóa textarea
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">isInvalid</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Trạng thái lỗi</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  isInvalid
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Trạng thái lỗi
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">errorMessage</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Thông báo lỗi</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  errorMessage
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Thông báo lỗi
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">description</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">string</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Mô tả thêm cho textarea</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  description
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  string
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Mô tả thêm cho textarea
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">labelPlacement</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">&quot;inside&quot; | &quot;outside&quot; | &quot;outside-left&quot;</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">&quot;outside&quot;</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Vị trí nhãn</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  labelPlacement
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;inside&quot; | &quot;outside&quot; |
+                  &quot;outside-left&quot;
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  &quot;outside&quot;
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Vị trí nhãn
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">minRows</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">number</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Số dòng tối thiểu</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  minRows
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  number
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Số dòng tối thiểu
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">maxRows</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">number</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">-</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Số dòng tối đa</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  maxRows
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  number
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  -
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Số dòng tối đa
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">readOnly</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">boolean</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">false</td>
-                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">Chỉ đọc</td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  readOnly
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  boolean
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  false
+                </td>
+                <td className="border border-gray-300 dark:border-gray-700 px-4 py-2">
+                  Chỉ đọc
+                </td>
               </tr>
             </tbody>
           </table>

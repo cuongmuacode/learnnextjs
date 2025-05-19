@@ -60,7 +60,6 @@ export default function DocsLayout({
           overflow-y-auto fixed left-0 top-16 dark:bg-black border-r border-divider"
       >
         <VkxAccordion
-          className="pb-16"
           accordionItems={[
             {
               key: "component",
@@ -70,7 +69,7 @@ export default function DocsLayout({
                 </p>
               ),
               children: (
-                <VkxAccordion                  
+                <VkxAccordion
                   accordionItems={[
                     // Form components
                     {
@@ -90,7 +89,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500"
+                                  : "text-default-500",
                               )}
                               href={item.href}
                             >
@@ -125,7 +124,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500"
+                                  : "text-default-500",
                               )}
                               href={item.href}
                             >
@@ -160,7 +159,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500"
+                                  : "text-default-500",
                               )}
                               href={item.href}
                             >
@@ -195,7 +194,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500"
+                                  : "text-default-500",
                               )}
                               href={item.href}
                             >
@@ -217,6 +216,7 @@ export default function DocsLayout({
               ),
             },
           ]}
+          className="pb-16"
           defaultExpandedKeys={new Set(["component"])}
         />
       </div>

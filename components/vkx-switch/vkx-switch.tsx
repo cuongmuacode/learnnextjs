@@ -38,7 +38,6 @@ export interface VkxSwitchProps extends SwitchProps {
 }
 
 export const VkxSwitch: React.FC<VkxSwitchProps> = ({
-  children,
   classNames,
   color = "primary",
   defaultSelected,
@@ -57,7 +56,6 @@ export const VkxSwitch: React.FC<VkxSwitchProps> = ({
 }) => {
   return (
     <Switch
-      children={children}
       classNames={classNames}
       color={color}
       defaultSelected={defaultSelected}
@@ -67,11 +65,11 @@ export const VkxSwitch: React.FC<VkxSwitchProps> = ({
       isReadOnly={isReadOnly}
       isSelected={isSelected}
       name={name}
-      onChange={onChange}
-      onValueChange={onValueChange}
       size={size}
       startContent={startContent}
       value={value}
+      onChange={onChange}
+      onValueChange={onValueChange}
       {...props}
     />
   );

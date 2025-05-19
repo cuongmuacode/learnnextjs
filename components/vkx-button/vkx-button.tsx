@@ -22,17 +22,15 @@ const VkxButton: React.FC<VkxButtonProps> = ({
       isDisabled={isDisabled}
       isIconOnly={isIconOnly}
       isLoading={isLoading}
-      onPress={onPress}
       startContent={startContent}
-      type={type} 
+      type={type}
       variant={variant}
+      onPress={onPress}
       {...props}
     >
-
       {children}
     </Button>
   );
 };
 
 export default VkxButton;
-

@@ -3,8 +3,9 @@ import { Input } from "@heroui/input";
 import { VkxInputProps } from "./vkx-input-props";
 
 export const VkxInput: React.FC<VkxInputProps> = ({
+  accept,
   children,
-  className, 
+  className,
   defaultValue,
   description,
   endContent,
@@ -31,7 +32,8 @@ export const VkxInput: React.FC<VkxInputProps> = ({
 }) => {
   return (
     <Input
-      className={className} 
+      accept={accept}
+      className={className}
       defaultValue={defaultValue}
       description={description}
       endContent={endContent}
@@ -41,17 +43,17 @@ export const VkxInput: React.FC<VkxInputProps> = ({
       isRequired={isRequired}
       label={label}
       labelPlacement={labelPlacement}
-      min={min}
       max={max}
       maxLength={maxLength}
+      min={min}
+      name={name}
+      pattern={pattern}
       placeholder={placeholder}
       readOnly={readOnly}
-      type={type}
-      pattern={pattern}
       required={required}
-      value={value}
+      type={type}
       validate={validate}
-      name={name}
+      value={value}
       onClear={onClear}
       onValueChange={onValueChange}
       {...props}
