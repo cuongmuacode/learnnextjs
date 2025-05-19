@@ -1,7 +1,12 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteProps,
+} from "@heroui/react";
+import { Key } from "@react-types/shared";
 
 export interface VkxAutocompleteOption {
   textValue: string;
@@ -14,7 +19,7 @@ export interface VkxScrollShadowProps {
   isEnabled?: boolean;
 }
 
-interface VkxAutocompleteProps {
+interface VkxAutocompleteProps extends AutocompleteProps {
   allowsCustomValue?: boolean;
   className?: string;
   color?:
@@ -30,9 +35,9 @@ interface VkxAutocompleteProps {
   isDisabled?: boolean;
   isRequired?: boolean;
   label?: string;
-  onClose?: (value: boolean) => void;
-  onInputChange?: (value: any) => void;
-  onSelectionChange?: (value: any) => void;
+  onClose?: () => void | undefined;
+  onInputChange?: (value: string) => void | undefined;
+  onSelectionChange?: ((key: Key | null) => void) | undefined;
   options: VkxAutocompleteOption[];
   placeholder?: string;
   readOnly?: boolean;
@@ -41,7 +46,7 @@ interface VkxAutocompleteProps {
   size?: "sm" | "md" | "lg";
   startContent?: ReactNode;
   variant?: "flat" | "bordered" | "underlined" | "faded";
-  vkxScrollShadowProps?: VkxScrollShadowProps;
+  scrollShadowProps?: VkxScrollShadowProps;
 }
 
 export function VkxAutocomplete({
@@ -65,13 +70,8 @@ export function VkxAutocomplete({
   size,
   startContent,
   variant,
-  vkxScrollShadowProps,
+  scrollShadowProps,
 }: VkxAutocompleteProps) {
-  // Adapt onClose to match Autocomplete's expected signature
-  const handleClose = () => {
-    if (onClose) onClose(false);
-  };
-
   return (
     <Autocomplete
       allowsCustomValue={allowsCustomValue}
@@ -83,7 +83,7 @@ export function VkxAutocomplete({
       isDisabled={isDisabled}
       isRequired={isRequired}
       label={label}
-      onClose={handleClose}
+      onClose={onClose}
       onInputChange={onInputChange}
       onSelectionChange={onSelectionChange}
       placeholder={placeholder}
@@ -93,6 +93,7 @@ export function VkxAutocomplete({
       size={size}
       startContent={startContent}
       variant={variant}
+      scrollShadowProps={scrollShadowProps}
     >
       {options.map((option) => (
         <AutocompleteItem

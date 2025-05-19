@@ -16,6 +16,7 @@ export function VkxAccordion({
   selectedKeys,
   selectionMode = "multiple",
   variant = "light",
+  ...props
 }: VkxAccordionProps) {
   return (
     <Accordion
@@ -28,6 +29,7 @@ export function VkxAccordion({
       selectedKeys={selectedKeys}
       selectionMode={selectionMode}
       variant={variant}
+      {...props}
     >
       {accordionItems.map((item) => (
         <AccordionItem

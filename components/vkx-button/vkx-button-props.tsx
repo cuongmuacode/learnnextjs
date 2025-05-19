@@ -1,5 +1,6 @@
+import { ButtonProps } from "@heroui/button";
 import { PressEvent } from "@react-types/shared";
-export interface VkxButtonProps {
+export interface VkxButtonProps extends ButtonProps {
   children: React.ReactNode;
   className?: string; // add className prop
   color?:
@@ -15,5 +16,13 @@ export interface VkxButtonProps {
   startContent?: React.ReactNode;
   type?: "button" | "submit" | "reset";
   isIconOnly?: boolean;
+  variant:
+    | "solid"
+    | "bordered"
+    | "light"
+    | "flat"
+    | "faded"
+    | "shadow"
+    | "ghost";
   onPress?: ((e: PressEvent) => void) | undefined;
 }

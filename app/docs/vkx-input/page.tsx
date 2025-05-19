@@ -3,6 +3,7 @@
 import React, { JSX } from "react";
 
 import { VkxInput } from "@/components/vkx-input/vkx-input";
+import VkxButton from "@/components/vkx-button/vkx-button";
 
 export default function VkxInputPage() {
   const [value, setValue] = React.useState("");
@@ -187,23 +188,31 @@ export default function VkxInputPage() {
         <VkxInput
           description="Click vào icon bên phải để hiện/ẩn mật khẩu"
           endContent={
-            <button
+            <VkxButton
               aria-label="toggle password visibility"
               className="focus:outline-none"
               type="button"
-              onClick={toggleVisibility}
+              variant="light"
+              isIconOnly = {true}
+              onPress={toggleVisibility}
             >
               {isVisible ? (
                 <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
               ) : (
                 <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
               )}
-            </button>
+            </VkxButton>
           }
           label="Password"
           placeholder="Nhập mật khẩu của bạn"
           type={isVisible ? "text" : "password"}
         />
+      </div>
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+          <VkxInput type="file"
+            
+            
+          ></VkxInput>
       </div>
 
       <div className="mt-12">

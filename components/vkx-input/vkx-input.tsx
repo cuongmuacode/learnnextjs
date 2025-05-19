@@ -14,6 +14,9 @@ export const VkxInput: React.FC<VkxInputProps> = ({
   isRequired,
   label,
   labelPlacement,
+  min,
+  max,
+  maxLength,
   name,
   onClear,
   onValueChange,
@@ -24,6 +27,7 @@ export const VkxInput: React.FC<VkxInputProps> = ({
   type = "text",
   value,
   validate,
+  ...props
 }) => {
   return (
     <Input
@@ -37,6 +41,9 @@ export const VkxInput: React.FC<VkxInputProps> = ({
       isRequired={isRequired}
       label={label}
       labelPlacement={labelPlacement}
+      min={min}
+      max={max}
+      maxLength={maxLength}
       placeholder={placeholder}
       readOnly={readOnly}
       type={type}
@@ -47,6 +54,7 @@ export const VkxInput: React.FC<VkxInputProps> = ({
       name={name}
       onClear={onClear}
       onValueChange={onValueChange}
+      {...props}
     >
       {children}
     </Input>

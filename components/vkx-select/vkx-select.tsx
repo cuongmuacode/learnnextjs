@@ -64,6 +64,7 @@ export const VkxSelect: React.FC<VkxSelectProps> = ({
   size,
   startContent,
   variant,
+  ...props
 }) => {
   return (
     <Select
@@ -89,6 +90,7 @@ export const VkxSelect: React.FC<VkxSelectProps> = ({
       variant={variant}
       onOpenChange={onOpenChange}
       onSelectionChange={onSelectionChange}
+      {...props}
     >
       {selectItems.map((item) => (
         <SelectItem

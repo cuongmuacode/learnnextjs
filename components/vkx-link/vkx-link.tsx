@@ -1,7 +1,7 @@
-import { Link } from "@heroui/react";
+import { Link, LinkProps } from "@heroui/react";
 import React, { ReactNode } from "react";
 
-export interface VkxLinkProps {
+export interface VkxLinkProps extends LinkProps {
   href: string;
   children: ReactNode;
   className?: string;
@@ -9,7 +9,13 @@ export interface VkxLinkProps {
   isExternal?: boolean;
   isBlock?: boolean;
   size?: "sm" | "md" | "lg";
-  color?: "foreground" | "primary" | "secondary" | "success" | "warning" | "danger";
+  color?:
+    | "foreground"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger";
   underline?: "none" | "hover" | "always" | "active" | "focus";
   showAnchorIcon?: boolean;
   anchorIcon?: ReactNode;
@@ -49,6 +55,7 @@ export const VkxLink: React.FC<VkxLinkProps> = ({
   size,
   target,
   underline,
+  ...props
 }) => {
   return (
     <Link
@@ -73,6 +80,7 @@ export const VkxLink: React.FC<VkxLinkProps> = ({
       size={size}
       target={target}
       underline={underline}
+      {...props}
     >
       {children}
     </Link>
