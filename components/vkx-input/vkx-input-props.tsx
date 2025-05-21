@@ -12,6 +12,7 @@ export interface VkxInputProps extends InputProps {
     | "email"
     | "password"
     | "file"
+    | "number"
     | (string & {});
   placeholder?: string;
   pattern?: string;

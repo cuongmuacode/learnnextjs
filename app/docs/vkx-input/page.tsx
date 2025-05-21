@@ -7,8 +7,10 @@ import VkxButton from "@/components/vkx-button/vkx-button";
 
 export default function VkxInputPage() {
   const [value, setValue] = React.useState("");
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [numberValue, setNumberValue] = React.useState("");
 
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [files, setFiles] = React.useState<FileList>();
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   React.useEffect(() => {
@@ -54,7 +56,7 @@ export default function VkxInputPage() {
             thị thông tin mà không cho phép chỉnh sửa.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            Hữu ích cho các trường thông tin tĩnh hoặc khi cần tạm thời khóa khả
+            Hữu ích cho các trường thông tin tĩnh hoặc khi cần tạm thời khoá khả
             năng nhập liệu.
           </p>
         </div>
@@ -213,15 +215,69 @@ export default function VkxInputPage() {
         <h1 className="text-xl font-medium text-black dark:text-white">
           7. Tải lên một hoặc nhiều file
         </h1>
-        <div className="mb-4">
-          <p className="text-gray-600 dark:text-gray-400">
-            Kiểm tra xem đuôi file có
-          </p>
-          <p className="mt-2 text-sm text-gray-500" />
-        </div>
+        <p className="text-gray-600 dark:text-gray-400">
+          Kiểm tra xem đuôi file có
+        </p>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <VkxInput multiple accept="video/mp4" type="file" />
+        <VkxInput
+          isRequired
+          multiple
+          label="Tải lên file của bạn"
+          labelPlacement="outside"
+          type="file"
+          onChange={(e) => {
+            if (e.target.files) {
+              setFiles(e.target.files);
+            }
+          }}
+        />
+      </div>
+      <div className="text-gray-600 dark:text-gray-400">
+        {files
+          ? Array.from(files).map((item, index) => (
+              <div
+                key={`${item.name} + ${index}`}
+                className="mt-3 p-2 border-b-2"
+              >
+                <span>
+                  Tên file: <strong>{files?.item(0)?.name}</strong>
+                </span>
+                <br />
+                <span>
+                  Kích cỡ:<strong>{files?.item(0)?.size}</strong>{" "}
+                </span>
+                <br />
+                <span>
+                  Loại: <strong>{files?.item(0)?.type}</strong>
+                </span>
+                <br />
+                <strong>..v.v.</strong>
+              </div>
+            ))
+          : ""}
+      </div>
+
+      <div>
+        <h1 className="text-xl font-medium text-black dark:text-white">
+          8. Number input
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400" />
+      </div>
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+        <VkxInput
+          label="Nhập số tiền"
+          max={100000}
+          min={0.1}
+          step={1}
+          type="number"
+          onValueChange={(value) => {
+            setNumberValue(value);
+          }}
+        />
+      </div>
+      <div className="mt-2 text-gray-600 dark:text-gray-400">
+        Giá trị hiện tại: {numberValue}
       </div>
 
       <div className="mt-12">

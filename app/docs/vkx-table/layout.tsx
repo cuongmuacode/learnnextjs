@@ -1,4 +1,4 @@
-export default function VkxDateRangePicker({
+export default function VkxTableLayout({
   children,
 }: {
   children: React.ReactNode;
