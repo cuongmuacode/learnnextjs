@@ -3,7 +3,7 @@ import { AccordionProps } from "@heroui/react";
 
 import { VkxAccordionItemProps } from "./vkx-accordion-item-props";
 
-export interface VkxAccordionProps extends AccordionProps {
+export interface VkxAccordionProps extends Omit<AccordionProps, "children"> {
   accordionItems: VkxAccordionItemProps[];
   defaultExpandedKeys?: Set<string>;
   disabledKeys?: Set<string>;

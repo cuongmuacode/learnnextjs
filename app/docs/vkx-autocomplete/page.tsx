@@ -2,7 +2,6 @@
 
 import React, { JSX, SVGProps } from "react";
 import { Avatar } from "@heroui/react";
-
 import {
   VkxAutocomplete,
   VkxAutocompleteOption,
@@ -27,57 +26,328 @@ export default function VkxAutocompletePage() {
     { textValue: "C++", value: "cpp" },
   ];
 
-  const [key, setValue] = React.useState("");
+  const [selectedKey, setSelectedKey] = React.useState<string>("");
   const [inputValue, setInputValue] = React.useState("");
+  const [touched, setTouched] = React.useState(false);
+
+  const isValid = selectedKey === "java";
 
   return (
     <div className="flex w-full flex-col gap-8">
+      <h1 className="text-2xl font-bold text-black dark:text-white mb-2">
+        VkxAutocomplete
+      </h1>
+      <p className="text-base text-gray-700 dark:text-gray-300 max-w-2xl">
+        <b>VkxAutocomplete</b> là một component autocomplete (tự động gợi ý khi
+        nhập) được xây dựng dựa trên HeroUI, hỗ trợ nhiều tính năng nâng cao như
+        chọn giá trị, hiển thị icon, trạng thái disabled, validation, và kiểm
+        soát giá trị từ bên ngoài. Dưới đây là các ví dụ sử dụng và bảng thuộc
+        tính chi tiết.
+      </p>
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        1. Autocomplete cơ bản
+      </h2>
       <VkxAutocomplete
         className="max-w-xs"
-        isDisabled={true}
-        label="Programming Language"
+        label="Ngôn ngữ lập trình"
         options={autocompleteOptions}
-        placeholder="Select a programming language"
-      />
-      <VkxAutocomplete
-        isRequired
-        readOnly
-        className="max-w-xs"
-        disabledKeys={new Set(["python"])}
-        isDisabled={false}
-        label="Programming Language"
-        options={autocompleteOptions}
-        placeholder="Select a programming language"
+        placeholder="Chọn ngôn ngữ lập trình"
       />
 
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        2. Autocomplete bị vô hiệu hóa
+      </h2>
       <VkxAutocomplete
-        allowsCustomValue
-        isRequired
         className="max-w-xs"
-        color="secondary"
-        description="Description programming"
-        disabledKeys={new Set(["python"])}
-        isDisabled={false}
-        label="Programming Language"
+        isDisabled
+        label="Ngôn ngữ lập trình"
         options={autocompleteOptions}
-        placeholder="Select a programming language"
-        scrollShadowProps={{
-          isEnabled: true,
-        }}
-        selectedKey={key}
-        selectorIcon={<PetIcon className="text-xl" />}
-        size="md"
-        startContent={<PetIcon className="text-xl" />}
-        variant="bordered"
-        onInputChange={setInputValue}
-        onSelectionChange={(key) => {
-          setValue(key as string);
-        }}
+        placeholder="Chọn ngôn ngữ lập trình"
       />
-      <p className="mt-1 text-small text-default-500">
-        Current input value: {inputValue}
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        3. Autocomplete với các mục bị vô hiệu hóa
+      </h2>
+      <VkxAutocomplete
+        className="max-w-xs"
+        label="Ngôn ngữ lập trình"
+        options={autocompleteOptions}
+        placeholder="Chọn ngôn ngữ lập trình"
+        disabledKeys={new Set(["python"])}
+      />
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        4. Autocomplete với icon và mô tả
+      </h2>
+      <VkxAutocomplete
+        className="max-w-xs"
+        label="Ngôn ngữ lập trình"
+        description="Hãy chọn ngôn ngữ bạn thích"
+        options={autocompleteOptions}
+        placeholder="Chọn ngôn ngữ lập trình"
+        startContent={<PetIcon className="text-xl" />}
+        selectorIcon={<PetIcon className="text-xl" />}
+        variant="bordered"
+      />
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        5. Autocomplete với validation
+      </h2>
+      <VkxAutocomplete
+        className="max-w-xs"
+        isRequired
+        label="Ngôn ngữ lập trình"
+        options={autocompleteOptions}
+        placeholder="Chọn ngôn ngữ lập trình"
+        errorMessage={!selectedKey ? "Vui lòng chọn một ngôn ngữ" : ""}
+        selectedKey={selectedKey}
+        onSelectionChange={(key) => setSelectedKey(key as string)}
+      />
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        6. Autocomplete với controlled value
+      </h2>
+      <VkxAutocomplete
+        className="max-w-xs"
+        label="Ngôn ngữ lập trình"
+        options={autocompleteOptions}
+        placeholder="Chọn ngôn ngữ lập trình"
+        selectedKey={selectedKey}
+        onSelectionChange={(key) => setSelectedKey(key as string)}
+        onInputChange={setInputValue}
+      />
+      <p className="mt-1 text-sm text-gray-500">
+        Giá trị đang nhập: {inputValue}
       </p>
-      <p className="text-small text-default-500">Current key text: {key}</p>
+      <p className="text-sm text-gray-500">Giá trị đã chọn: {selectedKey}</p>
+
+      <h2 className="text-xl font-medium text-black dark:text-white mt-8 mb-2">
+        7. Với Thông Báo Lỗi
+      </h2>
+      <p>
+        Bạn có thể kết hợp hai thuộc tính isInvalid và errorMessage để hiển thị
+        thông báo lỗi cho thành phần Autocomplete khi giá trị không hợp lệ.
+      </p>
+      <VkxAutocomplete
+        className="max-w-xs"
+        label="Ngôn ngữ lập trình"
+        options={autocompleteOptions}
+        placeholder="Chọn ngôn ngữ lập trình"
+        errorMessage={isValid || !touched ? "" : "You must select a Java"}
+        selectedKey={selectedKey}
+        isInvalid={isValid || !touched ? false : true}
+        onSelectionChange={(key) => setSelectedKey(key as string)}
+        onClose={() => setTouched(true)}
+      />
+      <div className="mt-12">
+        <h2 className="text-2xl font-medium text-black dark:text-white mb-6">
+          Tài liệu về các thuộc tính (Props)
+        </h2>
+
+        <h3 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">
+          VkxAutocomplete Props
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Thuộc tính
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Kiểu dữ liệu
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mặc định
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mô tả
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white dark:bg-gray-900">
+              <tr>
+                <td className="border px-4 py-2">options</td>
+                <td className="border px-4 py-2">VkxAutocompleteOption[]</td>
+                <td className="border px-4 py-2">required</td>
+                <td className="border px-4 py-2">
+                  Danh sách các lựa chọn autocomplete
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">placeholder</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Văn bản gợi ý</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">label</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Nhãn của autocomplete</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">description</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Mô tả bổ sung</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">errorMessage</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Thông báo lỗi</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">selectedKey</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Giá trị đang được chọn</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">disabledKeys</td>
+                <td className="border px-4 py-2">Set&lt;string&gt;</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">
+                  Các lựa chọn bị vô hiệu hóa
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">onSelectionChange</td>
+                <td className="border px-4 py-2">(key: string) =&gt; void</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">
+                  Xử lý khi lựa chọn thay đổi
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">isDisabled</td>
+                <td className="border px-4 py-2">boolean</td>
+                <td className="border px-4 py-2">false</td>
+                <td className="border px-4 py-2">Vô hiệu hóa autocomplete</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">isRequired</td>
+                <td className="border px-4 py-2">boolean</td>
+                <td className="border px-4 py-2">false</td>
+                <td className="border px-4 py-2">Bắt buộc phải chọn</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">isInvalid</td>
+                <td className="border px-4 py-2">boolean</td>
+                <td className="border px-4 py-2">false</td>
+                <td className="border px-4 py-2 ">Giá trị không hợp lệ.</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">onInputChange</td>
+                <td className="border px-4 py-2">(value: string) =&gt; void</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">
+                  Xử lý khi giá trị input thay đổi
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">size</td>
+                <td className="border px-4 py-2">"sm" | "md" | "lg"</td>
+                <td className="border px-4 py-2">"md"</td>
+                <td className="border px-4 py-2">Kích thước</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">color</td>
+                <td className="border px-4 py-2">
+                  "default" | "primary" | "secondary" | "success" | "warning" |
+                  "danger"
+                </td>
+                <td className="border px-4 py-2">"default"</td>
+                <td className="border px-4 py-2">Màu sắc</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">variant</td>
+                <td className="border px-4 py-2">
+                  "flat" | "bordered" | "faded" | "underlined"
+                </td>
+                <td className="border px-4 py-2">"flat"</td>
+                <td className="border px-4 py-2">Kiểu dáng</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">labelPlacement</td>
+                <td className="border px-4 py-2">
+                  "inside" | "outside" | "outside-left"
+                </td>
+                <td className="border px-4 py-2">"outside"</td>
+                <td className="border px-4 py-2">Vị trí của label</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">startContent</td>
+                <td className="border px-4 py-2">ReactNode</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">
+                  Nội dung ở đầu autocomplete
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">selectorIcon</td>
+                <td className="border px-4 py-2">ReactNode</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Icon hiển thị ở selector</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">scrollShadowProps</td>
+                <td className="border px-4 py-2">object</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">
+                  Cấu hình hiệu ứng shadow khi cuộn
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="text-xl font-medium text-black dark:text-white mt-8 mb-4">
+          VkxAutocompleteOption Props
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Thuộc tính
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Kiểu dữ liệu
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mặc định
+                </th>
+                <th className="border border-gray-300 dark:border-gray-700 px-4 py-2 text-left">
+                  Mô tả
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white dark:bg-gray-900">
+              <tr>
+                <td className="border px-4 py-2">textValue</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">required</td>
+                <td className="border px-4 py-2">Nội dung hiển thị</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">value</td>
+                <td className="border px-4 py-2">string</td>
+                <td className="border px-4 py-2">required</td>
+                <td className="border px-4 py-2">Giá trị của lựa chọn</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">startContent</td>
+                <td className="border px-4 py-2">ReactNode</td>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">Nội dung ở đầu lựa chọn</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

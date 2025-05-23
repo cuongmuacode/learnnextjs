@@ -24,25 +24,31 @@ export default function DocsLayout({
     { name: "DatePicker", href: "/docs/vkx-date-picker" },
     { name: "DateInput", href: "/docs/vkx-date-input" },
     { name: "MonthPicker", href: "/docs/vkx-month-picker" },
+    { name: "NumberInput", href: "/docs/vkx-number-input" },
     { name: "YearPicker", href: "/docs/vkx-year-picker" },
 
     { name: "DateRangePicker", href: "/docs/vkx-date-range-picker" },
 
     { name: "Form", href: "/docs/vkx-form" },
+    { name: "FileInput", href: "/docs/vkx-file-input" },
+
     { name: "Input", href: "/docs/vkx-input" },
     { name: "Link", href: "/docs/vkx-link" },
     { name: "Popover", href: "/docs/vkx-popover" },
+    { name: "PasswordInput", href: "/docs/vkx-password-input" },
     { name: "RadioGroup", href: "/docs/vkx-radio-group" },
     { name: "RangeCalender", href: "/docs/vkx-range-calender" },
 
     { name: "Select", href: "/docs/vkx-select" },
+    { name: "SearchInput", href: "/docs/vkx-search-input" },
     { name: "Switch", href: "/docs/vkx-switch" },
     { name: "Slider", href: "/docs/vkx-slider" },
     { name: "Snippet", href: "/docs/vkx-snippet" },
     { name: "Skeleton", href: "/docs/vkx-skeleton" },
+
     { name: "TextArea", href: "/docs/vkx-text-area" },
     { name: "TimeInput", href: "/docs/vkx-time-input" },
-
+ 
     { name: "Table", href: "/docs/vkx-table" },
     { name: "Tooltip", href: "/docs/vkx-tooltip" },
   ];
@@ -51,7 +57,6 @@ export default function DocsLayout({
   const displayComponents: NavigationModels[] = [
     { name: "Accordion", href: "/docs/vkx-accordion" },
   ];
-
   return (
     <div className="flex">
       {/* Sidebar */}
@@ -89,7 +94,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500",
+                                  : "text-default-500"
                               )}
                               href={item.href}
                             >
@@ -124,7 +129,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500",
+                                  : "text-default-500"
                               )}
                               href={item.href}
                             >
@@ -159,7 +164,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500",
+                                  : "text-default-500"
                               )}
                               href={item.href}
                             >
@@ -194,7 +199,7 @@ export default function DocsLayout({
                                 "hover:bg-default-100",
                                 pathname === item.href
                                   ? "bg-default-100 text-default-foreground"
-                                  : "text-default-500",
+                                  : "text-default-500"
                               )}
                               href={item.href}
                             >
@@ -212,13 +217,13 @@ export default function DocsLayout({
                       ),
                     },
                   ]}
-                />
+                ></VkxAccordion>
               ),
             },
           ]}
           className="pb-16"
           defaultExpandedKeys={new Set(["component"])}
-        />
+        ></VkxAccordion>
       </div>
       {/* Main content */}
       <div className="flex-1 ml-64">{children}</div>

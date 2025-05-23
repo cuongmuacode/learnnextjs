@@ -4,7 +4,7 @@ import { Tooltip, TooltipPlacement, TooltipProps } from "@heroui/react";
 import { MotionProps } from "framer-motion";
 
 export interface VkxTooltipProps extends TooltipProps {
-  children: ReactNode[];
+  children: ReactNode;
   classNames?: Partial<Record<"base" | "content", string>>;
   closeDelay?: number;
   color?:
@@ -48,6 +48,7 @@ export const VkxTooltip: React.FC<VkxTooltipProps> = ({
   containerPadding = 12,
   content,
   crossOffset = 0,
+  children,
   defaultOpen,
   delay = 0,
   disableAnimation = false,
@@ -103,6 +104,8 @@ export const VkxTooltip: React.FC<VkxTooltipProps> = ({
       onClose={onClose}
       onOpenChange={onOpenChange}
       {...props}
-    />
+    >
+      {children}
+    </Tooltip>
   );
 };

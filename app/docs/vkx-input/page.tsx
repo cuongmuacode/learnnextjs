@@ -11,6 +11,7 @@ export default function VkxInputPage() {
 
   const [isVisible, setIsVisible] = React.useState(false);
   const [files, setFiles] = React.useState<FileList>();
+  
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   React.useEffect(() => {

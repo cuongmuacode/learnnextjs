@@ -27,8 +27,11 @@ export interface VkxInputProps extends InputProps {
   min?: string | number | undefined;
   max?: string | number | undefined;
   maxLength?: number;
-  description?: string;
+  description?: React.ReactNode;
+  errors?: string[];
   errorMessage?: string;
+  errorRequiredMessage?: string;
+  errorInvalidMessage?: string;
   isInvalid?: boolean;
   value?: string;
   onValueChange?: (value: string) => void;

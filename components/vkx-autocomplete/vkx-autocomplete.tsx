@@ -30,10 +30,11 @@ interface VkxAutocompleteProps {
     | "warning"
     | "danger";
   description?: string;
-  disabledKeys?: Set<any>;
+  disabledKeys?: Set<string>;
   errorMessage?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
+  isInvalid?: boolean;
   label?: string;
   onClose?: () => void | undefined;
   onInputChange?: (value: string) => void | undefined;
@@ -58,6 +59,7 @@ export function VkxAutocomplete({
   errorMessage,
   isDisabled,
   isRequired,
+  isInvalid,
   label,
   onClose,
   onInputChange,
@@ -83,6 +85,7 @@ export function VkxAutocomplete({
       errorMessage={errorMessage}
       isDisabled={isDisabled}
       isRequired={isRequired}
+      isInvalid={isInvalid}
       label={label}
       placeholder={placeholder}
       readOnly={readOnly}
@@ -93,7 +96,7 @@ export function VkxAutocomplete({
       startContent={startContent}
       variant={variant}
       onClose={onClose}
-      onInputChange={onInputChange}
+      onInputChange={onInputChange} 
       onSelectionChange={onSelectionChange}
       {...props}
     >

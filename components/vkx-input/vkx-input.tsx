@@ -1,6 +1,7 @@
 import { Input } from "@heroui/input";
 
 import { VkxInputProps } from "./vkx-input-props";
+import React from "react";
 
 export const VkxInput: React.FC<VkxInputProps> = ({
   accept,
@@ -10,6 +11,9 @@ export const VkxInput: React.FC<VkxInputProps> = ({
   description,
   endContent,
   errorMessage,
+  errors,
+  errorRequiredMessage,
+  errorInvalidMessage,
   isDisabled,
   isInvalid,
   isRequired,
@@ -30,6 +34,29 @@ export const VkxInput: React.FC<VkxInputProps> = ({
   validate,
   ...props
 }) => {
+  // const validateBase = (
+  //   value: string
+  // ): ValidationError | true | null | undefined => {
+  //   let errorMessages: string[] = [];
+  //   if (validate) {
+  //     var res = validate(value);
+  //     errorMessages.push(res);
+  //   }
+  //   if (isRequired && value && errorRequiredMessage)
+  //     errorMessages.push(errorRequiredMessage);
+  //   if (isInvalid && errorInvalidMessage) {
+  //     errorMessages.push(errorInvalidMessage);
+  //   }
+
+  //   return errorMessages;
+  // };
+
+  // const [errorMessages, setErrorMessages] = React.useState<string[]>([]);
+
+  // const onValueChangeBase = (value: string) => {
+  //   if (onValueChange) onValueChange(value);
+  //   if (value && errorRequiredMessage) errorMessages.push(errorRequiredMessage);
+  // };
   return (
     <Input
       accept={accept}
